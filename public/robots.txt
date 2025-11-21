@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nikawa-indonesia.com/sitemap.xml
+
