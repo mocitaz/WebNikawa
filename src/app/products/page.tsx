@@ -8,17 +8,17 @@ export default function ProductsPage() {
   return (
     <>
       {/* Hero Section */}
-      <SectionWrapper className="bg-white pt-24 md:pt-28 pb-10 md:pb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-neutral-50 rounded-3xl border border-neutral-100 p-6 md:p-10">
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-8 items-center">
-              <div className="space-y-4 max-w-3xl">
+      <SectionWrapper className="bg-white pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-neutral-50 rounded-2xl md:rounded-3xl border border-neutral-100 p-5 md:p-6 lg:p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-6 md:gap-8 items-center">
+              <div className="space-y-3 md:space-y-4 max-w-3xl">
                 <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
                   Produk & Layanan Utama
                 </p>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 leading-tight">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-neutral-900 leading-tight">
                   Solusi lengkap untuk kebutuhan manufaktur dan teknologi industri Anda
-          </h1>
+                </h1>
                 <p className="text-neutral-600 text-sm md:text-base leading-relaxed">
                   Portofolio produk NTI mencakup elektronik, manufaktur, dan infrastruktur untuk memastikan kesinambungan operasi industri Anda.
                 </p>
@@ -48,9 +48,9 @@ export default function ProductsPage() {
       </SectionWrapper>
 
       {/* Stats Section */}
-      <SectionWrapper className="bg-white py-6 md:py-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+      <SectionWrapper className="bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="bg-gradient-to-br from-primary/5 to-white rounded-2xl p-4 md:p-5 text-center border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
               <div className="text-2xl md:text-3xl font-bold text-primary mb-1.5">
                 {siteConfig.products.length.toString().padStart(2, '0')}
@@ -85,21 +85,21 @@ export default function ProductsPage() {
       </SectionWrapper>
 
       {/* Products Grid */}
-      <SectionWrapper className="bg-white py-10 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8 md:mb-10">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 text-center font-semibold">
+      <SectionWrapper className="bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="mb-6 md:mb-8 lg:mb-10">
+            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 md:mb-3 text-center font-semibold">
               Portofolio Produk & Layanan
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-4 text-center leading-tight max-w-3xl mx-auto">
+            <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 mb-3 md:mb-4 text-center leading-tight max-w-3xl mx-auto">
               Produk berkualitas tinggi untuk mendukung kebutuhan industri Anda
             </h2>
-            <p className="text-neutral-600 text-sm md:text-base text-center max-w-2xl mx-auto leading-relaxed">
+            <p className="text-neutral-600 text-sm md:text-base text-center max-w-2xl mx-auto leading-relaxed px-4">
               Setiap produk dirancang dengan presisi dan inovasi untuk memberikan solusi terbaik bagi klien kami.
-          </p>
-        </div>
+            </p>
+          </div>
         
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {siteConfig.products.map((product) => (
             <div key={product.id} id={product.id}>
               <ProductCard

@@ -15,19 +15,19 @@ export default function HomePage() {
       <SectionWrapper id="about" className="bg-neutral-50">
         <div className="bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[0.95fr,1.05fr]">
-            <div className="p-8 md:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-neutral-100 space-y-5">
-              <p className="text-sm uppercase tracking-[0.4em] text-primary/70">
+            <div className="p-6 md:p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-neutral-100 space-y-4">
+              <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70">
                 Tentang NTI
               </p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 leading-tight">
                 Distributor manufaktur elektronik & plastik terpercaya sejak 2014.
               </h2>
-              <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
+              <p className="text-neutral-600 text-sm md:text-base leading-relaxed">
                 Kami menyediakan resin plastik, produk injection molding, GSM modem, komponen elektronik, PCBA, serta solusi manufaktur terintegrasi di Asia Tenggara.
               </p>
             </div>
 
-            <div className="p-6 md:p-10">
+            <div className="p-5 md:p-6 lg:p-10">
               <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between mb-4">
                 <p className="text-sm uppercase tracking-[0.4em] text-primary/70">
                   Mengapa Memilih Kami
@@ -63,13 +63,13 @@ export default function HomePage() {
 
       {/* Products Preview Section */}
       <SectionWrapper id="products" className="bg-white">
-        <div className="mb-12 bg-neutral-50 rounded-3xl border border-neutral-100 p-6 md:p-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-8 items-center">
-            <div className="space-y-4 max-w-3xl">
+        <div className="mb-8 md:mb-12 bg-neutral-50 rounded-2xl md:rounded-3xl border border-neutral-100 p-5 md:p-6 lg:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-6 md:gap-8 items-center">
+            <div className="space-y-3 md:space-y-4 max-w-3xl">
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70">
                 Produk & Layanan Utama
               </p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 leading-tight">
                 Solusi lengkap untuk kebutuhan manufaktur dan teknologi industri Anda
               </h2>
               <p className="text-neutral-600 text-sm md:text-base">

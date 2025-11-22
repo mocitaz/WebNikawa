@@ -38,7 +38,7 @@ export default function ProductCard({ id, name, description, category, image }: 
 
         <div className="flex flex-wrap items-center gap-4">
           <Link
-            href={`/products#${id}`}
+            href={`/products/${id}`}
             className="inline-flex items-center text-primary font-semibold text-sm tracking-wide uppercase"
           >
             Read More

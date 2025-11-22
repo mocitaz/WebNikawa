@@ -1,57 +1,190 @@
 import SectionWrapper from '@/components/ui/SectionWrapper'
-import DownloadCard from '@/components/ui/DownloadCard'
 import PartnerGrid from '@/components/ui/PartnerGrid'
 import { siteConfig } from '@/content/site'
 import Link from 'next/link'
 
 export default function DownloadsPage() {
+  const companyProfile = siteConfig.downloads[0]
+
   return (
     <>
       {/* Hero Section */}
-      <SectionWrapper className="bg-white pt-24 md:pt-28 pb-10 md:pb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-neutral-50 rounded-3xl border border-neutral-100 p-6 md:p-10">
-            <div className="text-center max-w-3xl mx-auto space-y-4">
+      <SectionWrapper className="bg-white pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-neutral-50 rounded-2xl md:rounded-3xl border border-neutral-100 p-5 md:p-6 lg:p-10">
+            <div className="text-center max-w-3xl mx-auto space-y-3 md:space-y-4">
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
                 Download Center
               </p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 leading-tight">
-                Akses katalog, datasheet, dan dokumen perusahaan
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-neutral-900 leading-tight">
+                Unduh Company Profile PT Nikawa Teknika Indonesia
               </h1>
-              <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
-                Unduh dokumen resmi perusahaan, katalog produk, dan datasheet teknis untuk informasi lengkap tentang produk dan layanan NTI.
+              <p className="text-neutral-600 text-sm md:text-base lg:text-lg leading-relaxed px-4">
+                Akses dokumen resmi perusahaan dalam format PDF untuk informasi lengkap tentang produk dan layanan NTI.
               </p>
             </div>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Downloads Grid */}
-      <SectionWrapper className="bg-neutral-50 py-10 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
-              Dokumen & Katalog
-            </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-4 leading-tight">
-              Unduh dokumen resmi dan katalog produk NTI
-            </h2>
-            <p className="text-neutral-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Semua dokumen tersedia dalam format PDF dan dapat diunduh secara gratis
-            </p>
+      {/* Company Info Section */}
+      <SectionWrapper className="bg-neutral-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+            <div className="bg-white rounded-xl border border-neutral-100 p-4 text-center">
+              <div className="text-3xl font-semibold text-primary mb-1">
+                10+
+              </div>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Tahun Pengalaman
+              </div>
+            </div>
+            <div className="bg-white rounded-xl border border-neutral-100 p-4 text-center">
+              <div className="text-3xl font-semibold text-primary mb-1">
+                8
+              </div>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Lini Produk
+              </div>
+            </div>
+            <div className="bg-white rounded-xl border border-neutral-100 p-4 text-center">
+              <div className="text-3xl font-semibold text-primary mb-1">
+                2014
+              </div>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Didirikan
+              </div>
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {siteConfig.downloads.map((download) => (
-              <DownloadCard
-                key={download.id}
-                title={download.title}
-                description={download.description}
-                type={download.type}
-                size={download.size}
-                url={download.url}
-              />
-            ))}
+        </div>
+      </SectionWrapper>
+
+      {/* Download Section */}
+      <SectionWrapper className="bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-4 md:gap-6">
+            {/* Left: Download Card */}
+            <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm p-5 md:p-6 lg:p-8">
+              {/* Header */}
+              <div className="flex items-start gap-4 mb-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-2 leading-tight">
+                    {companyProfile.title}
+                  </h2>
+                  <p className="text-neutral-600 text-sm md:text-base leading-relaxed mb-4">
+                    {companyProfile.description}
+                  </p>
+                  <div className="flex items-center gap-3 text-xs">
+                    <span className="px-2.5 py-1 bg-primary/10 rounded-full text-primary font-semibold">
+                      {companyProfile.type}
+                    </span>
+                    <span className="text-neutral-500">
+                      {companyProfile.size}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Download Button */}
+              <a
+                href={companyProfile.url}
+                download
+                className="btn-primary w-full inline-flex items-center justify-center text-center group mb-4"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Company Profile
+              </a>
+
+              {/* Info */}
+              <div className="pt-4 border-t border-neutral-100">
+                <div className="flex items-start gap-2.5">
+                  <svg className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-xs md:text-sm text-neutral-600 leading-relaxed">
+                    File PDF akan diunduh langsung ke perangkat Anda. Pastikan koneksi internet stabil.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: What's Inside */}
+            <div className="bg-gradient-to-br from-primary/5 via-white to-primary/5 rounded-2xl border border-primary/10 p-5 md:p-6 lg:p-8">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-neutral-900 mb-3 md:mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Isi Company Profile
+              </h3>
+              <div className="space-y-3">
+                {[
+                  { icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', text: 'Profil Perusahaan & Sejarah' },
+                  { icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', text: 'Portofolio Produk & Layanan' },
+                  { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', text: 'Tim & Organisasi' },
+                  { icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', text: 'Pencapaian & Sertifikasi' },
+                  { icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', text: 'Kontak & Lokasi' },
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-3 group">
+                    <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <svg className="w-4 h-4 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d={item.icon} />
+                      </svg>
+                    </div>
+                    <span className="text-sm md:text-base text-neutral-700 flex-1">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Why Download Section */}
+      <SectionWrapper className="bg-neutral-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-white rounded-2xl border border-neutral-100 p-5 md:p-6 lg:p-8">
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-neutral-900 leading-tight">
+                Mengapa Download Company Profile?
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+              {[
+                { icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', text: 'Informasi lengkap tentang perusahaan dan layanan kami' },
+                { icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253', text: 'Referensi untuk presentasi dan proposal bisnis' },
+                { icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', text: 'Detail portofolio produk dan kapabilitas' },
+                { icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', text: 'Kontak dan informasi untuk kolaborasi' },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3 p-4 bg-neutral-50 rounded-xl border border-neutral-100 group hover:border-primary/30 hover:shadow-sm transition-all">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors mt-0.5">
+                    <svg className="w-4 h-4 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d={item.icon} />
+                    </svg>
+                  </div>
+                  <p className="text-sm md:text-base text-neutral-700 leading-relaxed flex-1 pt-1">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </SectionWrapper>
@@ -60,7 +193,7 @@ export default function DownloadsPage() {
       <PartnerGrid />
 
       {/* CTA Section */}
-      <SectionWrapper className="relative overflow-hidden py-12 md:py-16">
+      <SectionWrapper className="relative overflow-hidden py-8 md:py-10 lg:py-12">
         {/* Modern gradient background with animated pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-neutral-900" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(0,113,156,0.4),transparent_60%)]" />
@@ -70,20 +203,20 @@ export default function DownloadsPage() {
         }} />
         
         <div className="relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 md:p-10 lg:p-12 shadow-2xl">
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-8">
-                <div className="flex-1 space-y-4">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-0.5 h-8 bg-white/90 rounded-full" />
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-5 md:p-6 lg:p-10 xl:p-12 shadow-2xl">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-8">
+                <div className="flex-1 space-y-3 md:space-y-4">
+                  <div className="flex items-center gap-2 md:gap-2.5">
+                    <div className="w-0.5 h-6 md:h-8 bg-white/90 rounded-full" />
                     <p className="text-xs uppercase tracking-[0.3em] text-white/70 font-semibold">
-                      Siap Bekerja Sama dengan NTI?
+                      Tertarik Bekerja Sama?
                     </p>
                   </div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight">
                     Hubungi kami hari ini untuk konsultasi dan solusi terbaik
                   </h2>
-                  <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl">
+                  <p className="text-sm md:text-base lg:text-lg text-white/85 leading-relaxed max-w-xl">
                     Tim kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan industri Anda
                   </p>
                 </div>
@@ -153,188 +286,6 @@ export default function DownloadsPage() {
           </div>
         </div>
       </SectionWrapper>
-
-      {/* FAQ Section */}
-      <SectionWrapper className="bg-white py-10 md:py-12">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
-              Pertanyaan yang Sering Diajukan
-            </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-2 leading-tight">
-              Informasi penting tentang NTI
-            </h2>
-          </div>
-
-          <div className="space-y-2">
-            {/* FAQ 1 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Nikawa itu perusahaan apa?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                PT Nikawa Teknika Indonesia adalah distributor resmi komponen elektronik dan produk plastik industri yang berdiri sejak 13 Agustus 2014, berlokasi di Kawasan Industri Jababeka II, Cikarang, Bekasi.
-              </div>
-            </details>
-
-            {/* FAQ 2 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apa saja produk utama Nikawa?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <p className="mb-2">Kami menyediakan 8 lini produk:</p>
-                <ul className="space-y-1.5 list-none">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Komponen Elektronik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Perakitan PCBA</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>GSM/4G Modem</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>LED Road Studs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Resin Plastik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Produk Injeksi Plastik Custom</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Smart Meter</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Fiber Optic Gas Meter</span>
-                  </li>
-                </ul>
-              </div>
-            </details>
-
-            {/* FAQ 3 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah Nikawa melayani perakitan PCBA?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Ya. Kami memiliki partner EMS di Jababeka dengan 4 line SMT high-speed, standar IPC-A-610 Class 2 (bisa Class 3 untuk proyek medis/automotive safety).
-              </div>
-            </details>
-
-            {/* FAQ 4 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah barang ready stock?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Hampir semua komponen elektronik dan resin plastik ready stock di gudang Jababeka. PCBA prototype 3–7 hari, produksi massal 3–5 minggu.
-              </div>
-            </details>
-
-            {/* FAQ 5 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Bagaimana cara menghubungi atau minta penawaran?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <div className="space-y-1.5">
-                  <p>
-                    <strong className="text-neutral-900">Email:</strong>{' '}
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-primary hover:underline">
-                      {siteConfig.contact.email}
-                    </a>
-                  </p>
-                  <p>
-                    <strong className="text-neutral-900">Telepon/WhatsApp:</strong>{' '}
-                    <a href={`tel:${siteConfig.contact.phone}`} className="text-primary hover:underline">
-                      {siteConfig.contact.phone}
-                    </a>
-                  </p>
-                  <p className="text-xs text-neutral-500 mt-2">
-                    Kami balas maksimal 1×24 jam (hari kerja).
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-        </div>
-      </SectionWrapper>
     </>
   )
 }
-

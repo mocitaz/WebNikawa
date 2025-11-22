@@ -56,7 +56,7 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* 1. Hero Section Full-screen */}
+      {/* 1. Hero Section */}
       <section id="about-hero-section" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-900">
         {/* Background: Single hero image */}
         <div className="absolute inset-0">
@@ -64,7 +64,7 @@ export default function AboutPage() {
             src="/images/about/hero.png"
             alt="PT Nikawa Teknika Indonesia"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
         </div>
@@ -73,38 +73,41 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/80 via-neutral-900/60 to-neutral-900/80" />
         
         {/* Content */}
-        <div className="relative z-10 text-center px-4">
-          {/* Logo NTI besar putih */}
-          <div className="mb-8">
-            <Image
-              src="/images/hero/logo-footer.png"
-              alt="PT Nikawa Teknika Indonesia"
-              width={300}
-              height={100}
-              className="h-auto mx-auto brightness-0 invert"
-              priority
-            />
+        <div className="container-custom relative z-10 py-20 md:py-24 lg:py-32 px-4">
+          <div className="text-center max-w-5xl mx-auto">
+            {/* Logo NTI */}
+            <div className="mb-5 md:mb-6 lg:mb-8">
+              <Image
+                src="/images/hero/logo-footer.png"
+                alt="PT Nikawa Teknika Indonesia"
+                width={240}
+                height={80}
+                className="h-auto mx-auto brightness-0 invert"
+                style={{ width: 'auto', height: 'auto', maxWidth: '240px' }}
+                priority
+              />
+            </div>
+            
+            {/* Tagline */}
+            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight px-4">
+              {siteConfig.about.hero.tagline}
+            </h1>
           </div>
-          
-          {/* Tagline raksasa */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight max-w-5xl mx-auto">
-            {siteConfig.about.hero.tagline}
-          </h1>
         </div>
       </section>
 
       {/* 2. Profil Perusahaan */}
-      <SectionWrapper className="bg-neutral-50 py-10 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
-            <div className="p-8 md:p-12 lg:p-14 space-y-5">
+      <SectionWrapper className="bg-neutral-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
+            <div className="p-5 md:p-6 lg:p-8 xl:p-12 space-y-3 md:space-y-4">
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
                 Profil Perusahaan
               </p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight">
                 {siteConfig.about.profile.title}
               </h2>
-              <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-4xl">
+              <p className="text-neutral-600 text-sm md:text-base leading-relaxed max-w-4xl">
                 {siteConfig.about.profile.content}
               </p>
             </div>
@@ -113,19 +116,19 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* 3. Identitas Perusahaan */}
-      <SectionWrapper className="bg-white py-10 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
+      <SectionWrapper className="bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-5 md:mb-6 lg:mb-8">
+            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
               Identitas Perusahaan
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-neutral-900 leading-tight">
               Informasi lengkap tentang perusahaan kami
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {/* Baris 1: Nama Resmi */}
-            <div className="bg-white rounded-xl p-5 border border-neutral-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-xl p-4 md:p-5 border border-neutral-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5 text-primary" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -208,9 +211,9 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* 4. Visi & Misi */}
-      <SectionWrapper className="bg-neutral-50 py-10 md:py-12">
+      <SectionWrapper className="bg-neutral-50">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-4 md:gap-6">
             {/* Visi - Compact & Modern */}
             <div>
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-4 font-semibold text-center lg:text-left">
@@ -269,20 +272,20 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* 5. Bidang Usaha & Produk Utama (Grid 8 kartu) */}
-      <SectionWrapper className="bg-white py-10 md:py-12">
+      <SectionWrapper className="bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
+          <div className="text-center mb-6 md:mb-8">
+            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
               Bidang Usaha & Produk Utama
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-4 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-3 leading-tight">
               8 lini produk unggulan untuk mendukung kebutuhan industri Anda
             </h2>
             <p className="text-neutral-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
               Setiap produk dirancang dengan presisi dan inovasi untuk memberikan solusi terbaik
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {siteConfig.about.businessFields.map((product, index) => (
               <div
                 key={product.id}
@@ -314,20 +317,20 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* 6. Keunggulan Kami (Our Strength - 3 kolom besar) */}
-      <SectionWrapper className="bg-neutral-50 py-10 md:py-12">
+      <SectionWrapper className="bg-neutral-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
+          <div className="text-center mb-6 md:mb-8">
+            <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
               Keunggulan Kami
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-4 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-3 leading-tight">
               Tiga pilar utama yang membedakan NTI dalam industri
             </h2>
             <p className="text-neutral-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
               Komitmen kami terhadap kualitas, inovasi, dan layanan terbaik
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {siteConfig.about.strengths.map((strength, index) => (
             <div
               key={index}
@@ -368,7 +371,7 @@ export default function AboutPage() {
       <PartnerGrid />
 
       {/* 8. CTA Section */}
-      <SectionWrapper className="relative overflow-hidden py-12 md:py-16">
+      <SectionWrapper className="relative overflow-hidden py-8 md:py-10">
         {/* Modern gradient background with animated pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-neutral-900" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_40%,rgba(0,113,156,0.4),transparent_60%)]" />
@@ -463,7 +466,7 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* 9. FAQ Section */}
-      <SectionWrapper className="bg-white py-10 md:py-12">
+      <SectionWrapper className="bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
