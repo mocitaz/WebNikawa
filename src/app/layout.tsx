@@ -1,7 +1,22 @@
 import type { Metadata } from 'next'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'PT Nikawa Teknika Indonesia - Distribusi & Solusi Manufaktur Industri',
@@ -26,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id">
+    <html lang="id" className={`${inter.variable} ${poppins.variable}`}>
       <head>
         {/* Favicons */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -35,18 +50,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <Header />

@@ -343,7 +343,7 @@ export default function PrivacyPage() {
               <div className="flex-1">
                 <h2 className="text-xl md:text-2xl font-bold text-neutral-900 mb-4">Perubahan Kebijakan</h2>
                 <p className="text-neutral-700 leading-relaxed text-sm md:text-base">
-                  Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Perubahan akan diberitahukan dengan memperbarui tanggal "Terakhir diperbarui" di bagian atas halaman ini. Kami menyarankan Anda untuk meninjau kebijakan ini secara berkala untuk tetap mengetahui bagaimana kami melindungi informasi Anda.
+                  Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Perubahan akan diberitahukan dengan memperbarui tanggal &quot;Terakhir diperbarui&quot; di bagian atas halaman ini. Kami menyarankan Anda untuk meninjau kebijakan ini secara berkala untuk tetap mengetahui bagaimana kami melindungi informasi Anda.
                 </p>
               </div>
             </div>

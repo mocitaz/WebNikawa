@@ -6,9 +6,9 @@ import PartnerGrid from '@/components/ui/PartnerGrid'
 import { siteConfig } from '@/content/site'
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // Required for static export
@@ -19,7 +19,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProductDetailPageProps) {
-  const product = siteConfig.products.find((p) => p.id === params.id)
+  const { id } = await params
+  const product = siteConfig.products.find((p) => p.id === id)
 
   if (!product) {
     return {
@@ -34,8 +35,9 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
   }
 }
 
-export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = siteConfig.products.find((p) => p.id === params.id)
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const { id } = await params
+  const product = siteConfig.products.find((p) => p.id === id)
 
   if (!product || !product.detail) {
     notFound()
