@@ -1,0 +1,25 @@
+{
+  "name": "PT Nikawa Teknika Indonesia",
+  "short_name": "Nikawa",
+  "description": "Distribusi & Solusi Manufaktur Elektronik, Plastik, dan Komponen Industri",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#00719c",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
+
