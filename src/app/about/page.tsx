@@ -80,21 +80,21 @@ export default function AboutPage() {
           <div className="text-center max-w-5xl mx-auto">
             {/* Logo NTI */}
             <div className="mb-5 md:mb-6 lg:mb-8">
-              <Image
-                src="/images/hero/logo-footer.png"
-                alt="PT Nikawa Teknika Indonesia"
+            <Image
+              src="/images/hero/logo-footer.png"
+              alt="PT Nikawa Teknika Indonesia"
                 width={240}
                 height={80}
-                className="h-auto mx-auto brightness-0 invert"
+              className="h-auto mx-auto brightness-0 invert"
                 style={{ width: 'auto', height: 'auto', maxWidth: '240px' }}
-                priority
-              />
-            </div>
-            
+              priority
+            />
+          </div>
+          
             {/* Tagline */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight px-4">
               {t.about.hero.tagline}
-            </h1>
+          </h1>
           </div>
         </div>
       </section>

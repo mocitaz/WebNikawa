@@ -54,9 +54,9 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
         </LanguageProvider>
       </body>
     </html>

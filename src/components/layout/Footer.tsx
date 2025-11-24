@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+              <div>
             <h3 className="text-xs md:text-sm font-semibold text-neutral-900 mb-3 md:mb-4 uppercase tracking-wide">
               {t?.footer?.contact || 'Kontak'}
             </h3>
@@ -116,8 +116,8 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <a
-                    href={`tel:${siteConfig.contact.phone}`}
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
                     className="text-xs md:text-sm text-neutral-700 hover:text-primary transition-colors block break-words"
                   >
                     {siteConfig.contact.phone}
@@ -144,7 +144,7 @@ export default function Footer() {
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                  >
+                >
                     <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
@@ -215,15 +215,15 @@ export default function Footer() {
               <div>
                 <p className="text-xs text-neutral-500 mb-0.5 md:mb-1">{t?.footer?.established || 'Didirikan'}</p>
                 <p className="text-xs md:text-sm text-neutral-700 break-words">{siteConfig.company.established}</p>
-              </div>
+        </div>
               <div>
                 <p className="text-xs text-neutral-500 mb-1.5 md:mb-2">{t?.footer?.legal || 'Legal'}</p>
                 <ul className="space-y-1.5 md:space-y-2">
                   <li>
-                    <Link
-                      href="/privacy"
+              <Link
+                href="/privacy"
                       className="text-xs md:text-sm text-neutral-600 hover:text-primary transition-colors inline-flex items-center gap-1.5 md:gap-2 group"
-                    >
+              >
                       <svg
                         className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
                         fill="none"
@@ -236,13 +236,13 @@ export default function Footer() {
                         <path d="M9 5l7 7-7 7" />
                       </svg>
                       <span className="break-words">{t?.footer?.privacyPolicy || 'Privacy Policy'}</span>
-                    </Link>
+              </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/contact"
+              <Link
+                href="/contact"
                       className="text-xs md:text-sm text-neutral-600 hover:text-primary transition-colors inline-flex items-center gap-1.5 md:gap-2 group"
-                    >
+              >
                       <svg
                         className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
                         fill="none"
@@ -255,7 +255,7 @@ export default function Footer() {
                         <path d="M9 5l7 7-7 7" />
                       </svg>
                       <span className="break-words">{t?.footer?.contactUs || t?.common?.contactUs || 'Hubungi Kami'}</span>
-                    </Link>
+              </Link>
                   </li>
                 </ul>
               </div>

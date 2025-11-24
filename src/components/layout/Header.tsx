@@ -104,10 +104,52 @@ export default function Header() {
     }
   }, [pathname])
 
+  // Flag Icon Components
+  const FlagIcon = ({ code, className }: { code: string; className?: string }) => {
+    if (code === 'id') {
+      return (
+        <svg className={className} viewBox="0 0 640 480" fill="none">
+          <rect width="640" height="240" fill="#E70011"/>
+          <rect y="240" width="640" height="240" fill="#FFFFFF"/>
+        </svg>
+      )
+    }
+    if (code === 'en') {
+      return (
+        <svg className={className} viewBox="0 0 640 480" fill="none">
+          <rect width="640" height="480" fill="#012169"/>
+          <path d="M0 0l640 480M640 0L0 480" stroke="#FFF" strokeWidth="60"/>
+          <path d="M0 0l640 480M640 0L0 480" stroke="#C8102E" strokeWidth="40"/>
+          <path d="M320 0v480M0 240h640" stroke="#FFF" strokeWidth="100"/>
+          <path d="M320 0v480M0 240h640" stroke="#C8102E" strokeWidth="60"/>
+        </svg>
+      )
+    }
+    if (code === 'zh') {
+      return (
+        <svg className={className} viewBox="0 0 640 480" fill="none">
+          <rect width="640" height="480" fill="#DE2910"/>
+          <g fill="#FFDE00">
+            <rect x="128" y="128" width="42.7" height="42.7"/>
+            <rect x="213.3" y="128" width="42.7" height="42.7"/>
+            <rect x="298.7" y="128" width="42.7" height="42.7"/>
+            <rect x="128" y="213.3" width="42.7" height="42.7"/>
+            <rect x="213.3" y="213.3" width="42.7" height="42.7"/>
+            <rect x="298.7" y="213.3" width="42.7" height="42.7"/>
+            <rect x="128" y="298.7" width="42.7" height="42.7"/>
+            <rect x="213.3" y="298.7" width="42.7" height="42.7"/>
+            <rect x="298.7" y="298.7" width="42.7" height="42.7"/>
+          </g>
+        </svg>
+      )
+    }
+    return null
+  }
+
   const languages = [
-    { code: 'id' as const, name: 'ID', flag: '🇮🇩' },
-    { code: 'en' as const, name: 'EN', flag: '🇬🇧' },
-    { code: 'zh' as const, name: '中文', flag: '🇨🇳' },
+    { code: 'id' as const, name: 'ID' },
+    { code: 'en' as const, name: 'EN' },
+    { code: 'zh' as const, name: '中文' },
   ]
 
   const navItems = [
@@ -269,10 +311,10 @@ export default function Header() {
                   }`} />
                 </div>
                 
-                {/* Flag */}
-                <span className="text-base transition-transform duration-200 group-hover:scale-110">
-                  {languages.find(l => l.code === language)?.flag}
-                </span>
+                {/* Flag Icon */}
+                <div className="w-4 h-3 rounded-sm overflow-hidden transition-transform duration-200 group-hover:scale-110 shadow-sm border border-current/20">
+                  <FlagIcon code={language} className="w-full h-full" />
+                </div>
                 
                 {/* Language Name */}
                 <span className="hidden xl:inline font-semibold">
@@ -310,10 +352,10 @@ export default function Header() {
                     onClick={() => setIsLangMenuOpen(false)}
                   />
                   <div
-                    className={`absolute right-0 mt-1.5 w-40 rounded-xl shadow-xl border backdrop-blur-xl z-50 overflow-hidden animate-fade-in ${
+                    className={`absolute right-0 mt-1.5 w-40 rounded-xl shadow-2xl border z-50 overflow-hidden animate-fade-in ${
                       shouldBeTransparent
-                        ? 'bg-neutral-900/98 border-neutral-700/50 shadow-neutral-900/40'
-                        : 'bg-white/98 border-neutral-200/70 shadow-neutral-200/30'
+                        ? 'bg-neutral-900 border-neutral-700 shadow-neutral-900/60'
+                        : 'bg-white border-neutral-200 shadow-neutral-300/50'
                     }`}
                   >
                     {/* Header */}
@@ -360,12 +402,12 @@ export default function Header() {
                               : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
                           }`}
                         >
-                          {/* Flag with animation */}
-                          <span className={`text-base transition-transform duration-150 ${
+                          {/* Flag Icon with animation */}
+                          <div className={`w-5 h-4 rounded-sm overflow-hidden transition-transform duration-150 shadow-sm border border-current/20 ${
                             language === lang.code ? 'scale-110' : 'group-hover:scale-110'
                           }`}>
-                            {lang.flag}
-                          </span>
+                            <FlagIcon code={lang.code} className="w-full h-full" />
+                          </div>
                           
                           {/* Language name */}
                           <span className="flex-1">{lang.name}</span>
@@ -495,11 +537,11 @@ export default function Header() {
                         : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
                     }`}
                   >
-                    <span className={`text-base transition-transform duration-150 ${
+                    <div className={`w-5 h-4 rounded-sm overflow-hidden transition-transform duration-150 shadow-sm border border-current/20 ${
                       language === lang.code ? 'scale-110' : 'group-hover:scale-110'
                     }`}>
-                      {lang.flag}
-                    </span>
+                      <FlagIcon code={lang.code} className="w-full h-full" />
+                    </div>
                     <span>{lang.name}</span>
                     {language === lang.code && (
                       <svg

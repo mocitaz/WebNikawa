@@ -23,7 +23,7 @@ export default function ProductsPage() {
                 </p>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-neutral-900 leading-tight">
                   {t?.productsPage?.hero?.title || 'Solusi lengkap untuk kebutuhan manufaktur dan teknologi industri Anda'}
-                </h1>
+          </h1>
                 <p className="text-neutral-600 text-sm md:text-base leading-relaxed">
                   {t?.productsPage?.hero?.description || 'Portofolio produk NTI mencakup elektronik, manufaktur, dan infrastruktur untuk memastikan kesinambungan operasi industri Anda.'}
                 </p>
@@ -101,8 +101,8 @@ export default function ProductsPage() {
             </h2>
             <p className="text-neutral-600 text-sm md:text-base text-center max-w-2xl mx-auto leading-relaxed px-4">
               {t?.productsPage?.portfolio?.description || 'Setiap produk dirancang dengan presisi dan inovasi untuk memberikan solusi terbaik bagi klien kami.'}
-            </p>
-          </div>
+          </p>
+        </div>
         
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {siteConfig.products.map((product) => (
