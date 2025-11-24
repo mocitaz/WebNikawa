@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
@@ -52,9 +53,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body>
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )

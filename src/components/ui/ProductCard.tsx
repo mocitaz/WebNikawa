@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface ProductCardProps {
   id: string
@@ -9,6 +12,20 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ id, name, description, category, image }: ProductCardProps) {
+  const { t } = useLanguage()
+  
+  // Get translated product data
+  const translatedProduct = t?.products?.items?.find(p => p?.id === id)
+  const productName = translatedProduct?.name || name
+  const productDescription = translatedProduct?.description || description
+  
+  // Get translated category
+  let translatedCategory = category
+  if (translatedProduct?.category && t?.products?.categories) {
+    const categoryKey = translatedProduct.category as keyof typeof t.products.categories
+    translatedCategory = t.products.categories[categoryKey] || category
+  }
+  
   return (
     <div className="group bg-white border border-neutral-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
       <div className="relative h-48 overflow-hidden">
@@ -23,7 +40,7 @@ export default function ProductCard({ id, name, description, category, image }: 
         <div className="absolute inset-0 border-b border-white/10" />
         <div className="absolute bottom-6 left-6">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white bg-white/20 backdrop-blur">
-            {category}
+            {translatedCategory}
           </span>
         </div>
       </div>
@@ -31,9 +48,9 @@ export default function ProductCard({ id, name, description, category, image }: 
       <div className="p-6 space-y-4">
         <div>
           <h3 className="text-xl font-semibold text-neutral-900 mb-2 group-hover:text-primary transition-colors">
-            {name}
+            {productName}
           </h3>
-          <p className="text-neutral-600 text-sm leading-relaxed line-clamp-3">{description}</p>
+          <p className="text-neutral-600 text-sm leading-relaxed line-clamp-3">{productDescription}</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-4">
@@ -41,7 +58,7 @@ export default function ProductCard({ id, name, description, category, image }: 
             href={`/products/${id}`}
             className="inline-flex items-center text-primary font-semibold text-sm tracking-wide uppercase"
           >
-            Read More
+            {t.productCard.readMore}
             <svg
               className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
@@ -56,10 +73,10 @@ export default function ProductCard({ id, name, description, category, image }: 
           </Link>
 
           <Link
-            href={`/contact?product=${encodeURIComponent(name)}`}
+            href={`/contact?product=${encodeURIComponent(productName)}`}
             className="text-sm text-neutral-500 hover:text-primary transition-colors"
           >
-            Tanya Produk Ini
+            {t.productCard.askProduct}
           </Link>
         </div>
       </div>

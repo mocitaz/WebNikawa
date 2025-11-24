@@ -2,8 +2,10 @@
 
 import { siteConfig } from '@/content/site'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function PartnerGrid() {
+  const { t } = useLanguage()
   // Duplicate partners for seamless loop
   const partners = [...siteConfig.partners, ...siteConfig.partners]
 
@@ -12,13 +14,13 @@ export default function PartnerGrid() {
       <div className="container-custom">
         <div className="text-center mb-8 md:mb-10">
           <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3">
-            Partner & Klien Kami
+            {t.about.partners.eyebrow}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-            Kolaborasi Jangka Panjang
+            {t.about.partners.title}
           </h2>
           <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Bekerja sama dengan perusahaan teknologi terdepan di industri
+            {t.about.partners.description}
           </p>
         </div>
         

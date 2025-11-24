@@ -6,8 +6,10 @@ import Link from 'next/link'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import PartnerGrid from '@/components/ui/PartnerGrid'
 import { siteConfig } from '@/content/site'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ContactPage() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -19,7 +21,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Static form - no actual submission
-    alert('Terima kasih! Pesan Anda telah diterima. Tim kami akan menghubungi Anda segera.')
+    alert(t?.contactPage?.form?.success || 'Thank you! Your message has been received.')
     setFormData({ name: '', company: '', email: '', phone: '', message: '' })
   }
 
@@ -40,13 +42,13 @@ export default function ContactPage() {
           <div className="bg-neutral-50 rounded-2xl md:rounded-3xl border border-neutral-100 p-5 md:p-6 lg:p-10">
             <div className="text-center max-w-3xl mx-auto space-y-3 md:space-y-4">
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
-                Hubungi Kami
+                {t?.contactPage?.hero?.eyebrow || 'Hubungi Kami'}
               </p>
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-neutral-900 leading-tight">
-                Kami siap membantu Anda
+                {t?.contactPage?.hero?.title || 'Kami siap membantu Anda'}
               </h1>
               <p className="text-neutral-600 text-sm md:text-base lg:text-lg leading-relaxed px-4">
-                Hubungi tim kami untuk konsultasi, penawaran, atau informasi lebih lanjut tentang produk dan layanan NTI.
+                {t?.contactPage?.hero?.description || 'Hubungi tim kami untuk konsultasi, penawaran, atau informasi lebih lanjut tentang produk dan layanan NTI.'}
               </p>
             </div>
           </div>
@@ -71,11 +73,11 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
-                    Informasi Kontak
+                    {t?.contactPage?.contactInfo?.eyebrow || 'Informasi Kontak'}
                   </p>
                 </div>
                 <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 leading-tight">
-                  Hubungi kami melalui berbagai saluran
+                  {t?.contactPage?.contactInfo?.title || 'Hubungi kami melalui berbagai saluran'}
                 </h2>
               </div>
               
@@ -100,7 +102,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-primary mb-1.5 text-sm flex items-center gap-2">
-                      <span>Alamat</span>
+                      <span>{t?.contactPage?.contactInfo?.address?.label || 'Alamat'}</span>
                       <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -135,7 +137,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-primary mb-1.5 text-sm flex items-center gap-2">
-                      <span>Email</span>
+                      <span>{t?.contactPage?.contactInfo?.email?.label || 'Email'}</span>
                       <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -167,7 +169,7 @@ export default function ContactPage() {
                     <div className="absolute inset-0 bg-primary/10 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-primary mb-1.5 text-sm">Telepon & WhatsApp</h3>
+                    <h3 className="font-bold text-primary mb-1.5 text-sm">{t?.contactPage?.contactInfo?.phone?.label || 'Telepon & WhatsApp'}</h3>
                     <div className="space-y-1">
                       <a
                         href={`tel:${siteConfig.contact.phone}`}
@@ -184,7 +186,7 @@ export default function ContactPage() {
                         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                         </svg>
-                        WhatsApp: {siteConfig.contact.whatsapp}
+                        {t?.contactPage?.contactInfo?.phone?.whatsapp || 'WhatsApp'}: {siteConfig.contact.whatsapp}
                       </a>
                     </div>
                   </div>
@@ -208,8 +210,8 @@ export default function ContactPage() {
                     <div className="absolute inset-0 bg-primary/10 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-primary mb-1.5 text-sm">Jam Operasional</h3>
-                    <p className="text-xs text-neutral-700">{siteConfig.contact.hours}</p>
+                    <h3 className="font-bold text-primary mb-1.5 text-sm">{t?.contactPage?.contactInfo?.hours?.label || 'Jam Operasional'}</h3>
+                    <p className="text-xs text-neutral-700">{t?.contactPage?.contactInfo?.hours?.value || siteConfig.contact.hours}</p>
                   </div>
                 </div>
               </div>
@@ -225,7 +227,7 @@ export default function ContactPage() {
                   <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                   </svg>
-                  Hubungi via WhatsApp
+                  {t?.contactPage?.contactInfo?.buttons?.whatsapp || 'Hubungi via WhatsApp'}
                 </a>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
@@ -235,7 +237,7 @@ export default function ContactPage() {
                   <svg className="w-4 h-4 mr-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  Email Kami
+                  {t?.contactPage?.contactInfo?.buttons?.email || 'Email Kami'}
                 </a>
               </div>
             </div>
@@ -256,11 +258,11 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
-                    Kirim Pesan
+                    {t?.contactPage?.form?.eyebrow || 'Kirim Pesan'}
                   </p>
                 </div>
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-neutral-900 leading-tight">
-                  Isi formulir di bawah ini
+                  {t?.contactPage?.form?.title || 'Isi formulir di bawah ini'}
                 </h2>
               </div>
               <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
@@ -269,7 +271,7 @@ export default function ContactPage() {
                     htmlFor="name"
                     className="block text-xs font-semibold text-neutral-700 mb-1.5 group-focus-within:text-primary transition-colors"
                   >
-                    Nama *
+                    {t?.contactPage?.form?.fields?.name?.label || 'Nama *'}
                   </label>
                   <div className="relative">
                     <input
@@ -280,7 +282,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all bg-white text-sm placeholder:text-neutral-400 hover:border-neutral-400"
-                      placeholder="Nama lengkap Anda"
+                      placeholder={t?.contactPage?.form?.fields?.name?.placeholder || 'Nama lengkap Anda'}
                     />
                     <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none" />
                   </div>
@@ -291,7 +293,7 @@ export default function ContactPage() {
                     htmlFor="company"
                     className="block text-xs font-semibold text-neutral-700 mb-1.5 group-focus-within:text-primary transition-colors"
                   >
-                    Perusahaan
+                    {t?.contactPage?.form?.fields?.company?.label || 'Perusahaan'}
                   </label>
                   <div className="relative">
                     <input
@@ -301,7 +303,7 @@ export default function ContactPage() {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all bg-white text-sm placeholder:text-neutral-400 hover:border-neutral-400"
-                      placeholder="Nama perusahaan Anda"
+                      placeholder={t?.contactPage?.form?.fields?.company?.placeholder || 'Nama perusahaan Anda'}
                     />
                     <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none" />
                   </div>
@@ -312,7 +314,7 @@ export default function ContactPage() {
                     htmlFor="email"
                     className="block text-xs font-semibold text-neutral-700 mb-1.5 group-focus-within:text-primary transition-colors"
                   >
-                    Email *
+                    {t?.contactPage?.form?.fields?.email?.label || 'Email *'}
                   </label>
                   <div className="relative">
                     <input
@@ -323,7 +325,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all bg-white text-sm placeholder:text-neutral-400 hover:border-neutral-400"
-                      placeholder="email@example.com"
+                      placeholder={t?.contactPage?.form?.fields?.email?.placeholder || 'email@example.com'}
                     />
                     <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none" />
                   </div>
@@ -334,7 +336,7 @@ export default function ContactPage() {
                     htmlFor="phone"
                     className="block text-xs font-semibold text-neutral-700 mb-1.5 group-focus-within:text-primary transition-colors"
                   >
-                    Telepon
+                    {t?.contactPage?.form?.fields?.phone?.label || 'Telepon'}
                   </label>
                   <div className="relative">
                     <input
@@ -344,7 +346,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all bg-white text-sm placeholder:text-neutral-400 hover:border-neutral-400"
-                      placeholder="+62 xxx xxxx xxxx"
+                      placeholder={t?.contactPage?.form?.fields?.phone?.placeholder || '+62 xxx xxxx xxxx'}
                     />
                     <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none" />
                   </div>
@@ -355,7 +357,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-xs font-semibold text-neutral-700 mb-1.5 group-focus-within:text-primary transition-colors"
                   >
-                    Kebutuhan / Pesan *
+                    {t?.contactPage?.form?.fields?.message?.label || 'Kebutuhan / Pesan *'}
                   </label>
                   <div className="relative">
                     <textarea
@@ -366,7 +368,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none bg-white text-sm placeholder:text-neutral-400 hover:border-neutral-400"
-                      placeholder="Tulis kebutuhan atau pesan Anda di sini..."
+                      placeholder={t?.contactPage?.form?.fields?.message?.placeholder || 'Tulis kebutuhan atau pesan Anda di sini...'}
                     />
                     <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-focus-within:opacity-100 transition-opacity pointer-events-none" />
                   </div>
@@ -381,7 +383,7 @@ export default function ContactPage() {
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
-                    Kirim Pesan
+                    {t?.contactPage?.form?.submit || 'Kirim Pesan'}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary to-primary-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </button>
@@ -396,10 +398,10 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
-              Lokasi Kantor
+              {t?.contactPage?.map?.eyebrow || 'Lokasi Kantor'}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 leading-tight">
-              Kunjungi kantor kami di Jababeka
+              {t?.contactPage?.map?.title || 'Kunjungi kantor kami di Jababeka'}
             </h2>
           </div>
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-200">
@@ -441,14 +443,14 @@ export default function ContactPage() {
                   <div className="flex items-center gap-2.5">
                     <div className="w-0.5 h-8 bg-white/90 rounded-full" />
                     <p className="text-xs uppercase tracking-[0.3em] text-white/70 font-semibold">
-                      Siap Bekerja Sama dengan NTI?
+                      {t?.contactPage?.cta?.eyebrow || 'Siap Bekerja Sama dengan NTI?'}
                     </p>
                   </div>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                    Hubungi kami hari ini untuk konsultasi dan solusi terbaik
+                    {t?.contactPage?.cta?.title || 'Hubungi kami hari ini untuk konsultasi dan solusi terbaik'}
                   </h2>
                   <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl">
-                    Tim kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan industri Anda
+                    {t?.contactPage?.cta?.description || 'Tim kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan industri Anda'}
                   </p>
                 </div>
                 <div className="flex-shrink-0 w-full lg:w-auto">
@@ -458,7 +460,7 @@ export default function ContactPage() {
                       className="group relative inline-flex items-center justify-center w-full lg:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-white text-primary font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-neutral-50 hover:shadow-xl hover:shadow-white/40 hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <span className="relative z-10 flex items-center gap-2 text-sm md:text-base">
-                        Hubungi Kami
+                        {t?.contactPage?.cta?.contactButton || 'Hubungi Kami'}
                         <svg
                           className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"
                           fill="none"
@@ -483,7 +485,7 @@ export default function ContactPage() {
                         <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                         </svg>
-                        Chat WhatsApp
+                        {t?.contactPage?.cta?.whatsappButton || 'Chat WhatsApp'}
                       </span>
                       <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </a>
@@ -523,20 +525,20 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
-              Pertanyaan yang Sering Diajukan
+              {t?.contactPage?.faq?.eyebrow || 'Pertanyaan yang Sering Diajukan'}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-2 leading-tight">
-              Informasi penting tentang NTI
+              {t?.contactPage?.faq?.title || 'Informasi penting tentang NTI'}
             </h2>
           </div>
 
           <div className="space-y-2">
-            {/* FAQ 1 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Nikawa itu perusahaan apa?
-                </span>
+            {(t?.contactPage?.faq?.items || []).map((faq, index) => (
+              <details key={index} className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
+                <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
+                  <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
+                    {faq.question}
+                  </span>
                 <svg
                   className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
                   fill="none"
@@ -550,151 +552,10 @@ export default function ContactPage() {
                 </svg>
               </summary>
               <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                PT Nikawa Teknika Indonesia adalah distributor resmi komponen elektronik dan produk plastik industri yang berdiri sejak 13 Agustus 2014, berlokasi di Kawasan Industri Jababeka II, Cikarang, Bekasi.
+                {faq.answer}
               </div>
             </details>
-
-            {/* FAQ 2 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apa saja produk utama Nikawa?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <p className="mb-2">Kami menyediakan 8 lini produk:</p>
-                <ul className="space-y-1.5 list-none">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Komponen Elektronik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Perakitan PCBA</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>GSM/4G Modem</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>LED Road Studs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Resin Plastik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Produk Injeksi Plastik Custom</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Smart Meter</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Fiber Optic Gas Meter</span>
-                  </li>
-                </ul>
-              </div>
-            </details>
-
-            {/* FAQ 3 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah Nikawa melayani perakitan PCBA?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Ya. Kami memiliki partner EMS di Jababeka dengan 4 line SMT high-speed, standar IPC-A-610 Class 2 (bisa Class 3 untuk proyek medis/automotive safety).
-              </div>
-            </details>
-
-            {/* FAQ 4 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah barang ready stock?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Hampir semua komponen elektronik dan resin plastik ready stock di gudang Jababeka. PCBA prototype 3–7 hari, produksi massal 3–5 minggu.
-              </div>
-            </details>
-
-            {/* FAQ 5 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Bagaimana cara menghubungi atau minta penawaran?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <div className="space-y-1.5">
-                  <p>
-                    <strong className="text-neutral-900">Email:</strong>{' '}
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-primary hover:underline">
-                      {siteConfig.contact.email}
-                    </a>
-                  </p>
-                  <p>
-                    <strong className="text-neutral-900">Telepon/WhatsApp:</strong>{' '}
-                    <a href={`tel:${siteConfig.contact.phone}`} className="text-primary hover:underline">
-                      {siteConfig.contact.phone}
-                    </a>
-                  </p>
-                  <p className="text-xs text-neutral-500 mt-2">
-                    Kami balas maksimal 1×24 jam (hari kerja).
-                  </p>
-                </div>
-              </div>
-            </details>
+            ))}
           </div>
         </div>
       </SectionWrapper>

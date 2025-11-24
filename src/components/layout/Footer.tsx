@@ -1,25 +1,29 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { siteConfig } from '@/content/site'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   const quickLinks = [
-    { href: '/', label: 'Beranda' },
-    { href: '/products', label: 'Produk & Layanan' },
-    { href: '/about', label: 'Tentang Kami' },
-    { href: '/contact', label: 'Kontak' },
-    { href: '/downloads', label: 'Download' },
+    { href: '/', label: t?.nav?.home || 'Beranda' },
+    { href: '/products', label: t?.nav?.products || 'Produk & Layanan' },
+    { href: '/about', label: t?.nav?.about || 'Tentang Kami' },
+    { href: '/contact', label: t?.nav?.contact || 'Kontak' },
+    { href: '/downloads', label: t?.nav?.downloads || 'Download' },
   ]
 
   const productCategories = [
-    'Electronic Components',
-    'PCBA',
-    'GSM Modem',
-    'Plastic Resin',
-    'Plastic Injection',
-    'Smart Water Meter',
+    { key: 'Electronics', name: t?.products?.categories?.Electronics || 'Electronic Components' },
+    { key: 'Manufacturing', name: 'PCBA' },
+    { key: 'Electronics', name: 'GSM Modem' },
+    { key: 'Materials', name: t?.products?.categories?.Materials || 'Plastic Resin' },
+    { key: 'Manufacturing', name: 'Plastic Injection' },
+    { key: 'Infrastructure', name: 'Smart Water Meter' },
   ]
 
   return (
@@ -43,17 +47,17 @@ export default function Footer() {
               {siteConfig.company.name}
             </p>
             <p className="text-xs md:text-sm text-neutral-600 mb-3 md:mb-4 leading-relaxed">
-              {siteConfig.company.tagline}
+              {t?.footer?.tagline || siteConfig.company.tagline}
             </p>
             <div className="space-y-1.5 md:space-y-2">
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide">
-                Distributor of:
+                {t?.footer?.distributorOf || 'Distributor of:'}
               </p>
               <ul className="space-y-1 text-xs text-neutral-600">
                 {productCategories.map((category, index) => (
                   <li key={index} className="flex items-center gap-1.5 md:gap-2">
                     <span className="text-primary">•</span>
-                    <span className="break-words">{category}</span>
+                    <span className="break-words">{category.name}</span>
                   </li>
                 ))}
               </ul>
@@ -63,7 +67,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-xs md:text-sm font-semibold text-neutral-900 mb-3 md:mb-4 uppercase tracking-wide">
-              Navigasi
+              {t?.footer?.navigation || 'Navigasi'}
             </h3>
             <ul className="space-y-2 md:space-y-2.5">
               {quickLinks.map((link) => (
@@ -93,7 +97,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-xs md:text-sm font-semibold text-neutral-900 mb-3 md:mb-4 uppercase tracking-wide">
-              Kontak
+              {t?.footer?.contact || 'Kontak'}
             </h3>
             <div className="space-y-2.5 md:space-y-3">
               {/* Phone */}
@@ -124,7 +128,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="text-xs text-neutral-500 hover:text-primary transition-colors block mt-0.5 md:mt-1 break-words"
                   >
-                    WhatsApp: {siteConfig.contact.whatsapp}
+                    {t?.footer?.whatsapp || 'WhatsApp'}: {siteConfig.contact.whatsapp}
                   </a>
                 </div>
               </div>
@@ -196,7 +200,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <p className="text-xs md:text-sm text-neutral-700 break-words">
-                  {siteConfig.contact.hours}
+                  {t?.contactPage?.contactInfo?.hours?.value || siteConfig.contact.hours}
                 </p>
               </div>
             </div>
@@ -205,15 +209,15 @@ export default function Footer() {
           {/* About & Legal */}
           <div>
             <h3 className="text-xs md:text-sm font-semibold text-neutral-900 mb-3 md:mb-4 uppercase tracking-wide">
-              Informasi
+              {t?.footer?.information || 'Informasi'}
             </h3>
             <div className="space-y-2.5 md:space-y-3">
               <div>
-                <p className="text-xs text-neutral-500 mb-0.5 md:mb-1">Didirikan</p>
+                <p className="text-xs text-neutral-500 mb-0.5 md:mb-1">{t?.footer?.established || 'Didirikan'}</p>
                 <p className="text-xs md:text-sm text-neutral-700 break-words">{siteConfig.company.established}</p>
               </div>
               <div>
-                <p className="text-xs text-neutral-500 mb-1.5 md:mb-2">Legal</p>
+                <p className="text-xs text-neutral-500 mb-1.5 md:mb-2">{t?.footer?.legal || 'Legal'}</p>
                 <ul className="space-y-1.5 md:space-y-2">
                   <li>
                     <Link
@@ -231,7 +235,7 @@ export default function Footer() {
                       >
                         <path d="M9 5l7 7-7 7" />
                       </svg>
-                      <span className="break-words">Privacy Policy</span>
+                      <span className="break-words">{t?.footer?.privacyPolicy || 'Privacy Policy'}</span>
                     </Link>
                   </li>
                   <li>
@@ -250,7 +254,7 @@ export default function Footer() {
                       >
                         <path d="M9 5l7 7-7 7" />
                       </svg>
-                      <span className="break-words">Hubungi Kami</span>
+                      <span className="break-words">{t?.footer?.contactUs || t?.common?.contactUs || 'Hubungi Kami'}</span>
                     </Link>
                   </li>
                 </ul>
@@ -263,10 +267,10 @@ export default function Footer() {
         <div className="border-t border-neutral-200 pt-4 md:pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4">
             <p className="text-xs text-neutral-500 text-center sm:text-left break-words">
-              © {currentYear} {siteConfig.company.name}. All rights reserved.
+              © {currentYear} {siteConfig.company.name}. {t?.footer?.allRightsReserved || 'All rights reserved.'}
             </p>
             <p className="text-xs text-neutral-400 text-center sm:text-right break-words">
-              {siteConfig.company.philosophy}
+              {t?.footer?.philosophy || siteConfig.company.philosophy}
             </p>
           </div>
         </div>

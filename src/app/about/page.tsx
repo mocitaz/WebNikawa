@@ -5,8 +5,11 @@ import Link from 'next/link'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import PartnerGrid from '@/components/ui/PartnerGrid'
 import { siteConfig } from '@/content/site'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AboutPage() {
+  const { t } = useLanguage()
+  
   const missionIcons = {
     quality: (
       <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,7 +93,7 @@ export default function AboutPage() {
             
             {/* Tagline */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight px-4">
-              {siteConfig.about.hero.tagline}
+              {t.about.hero.tagline}
             </h1>
           </div>
         </div>
@@ -102,13 +105,13 @@ export default function AboutPage() {
           <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
             <div className="p-5 md:p-6 lg:p-8 xl:p-12 space-y-3 md:space-y-4">
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
-                Profil Perusahaan
+                {t.about.profile.title}
               </p>
               <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight">
-                {siteConfig.about.profile.title}
+                {t.about.profile.heading}
               </h2>
               <p className="text-neutral-600 text-sm md:text-base leading-relaxed max-w-4xl">
-                {siteConfig.about.profile.content}
+                {t.about.profile.content}
               </p>
             </div>
           </div>
@@ -120,10 +123,10 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-5 md:mb-6 lg:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
-              Identitas Perusahaan
+              {t.about.identity.title}
             </p>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-neutral-900 leading-tight">
-              Informasi lengkap tentang perusahaan kami
+              {t.about.identity.subtitle}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -136,7 +139,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">Nama Resmi</p>
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">{t.about.identity.officialName}</p>
                   <p className="text-sm font-semibold text-neutral-900">{siteConfig.about.identity.name}</p>
                 </div>
               </div>
@@ -151,7 +154,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">Tanggal Berdiri</p>
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">{t.about.identity.established}</p>
                   <p className="text-sm font-semibold text-neutral-900">{siteConfig.about.identity.established}</p>
                 </div>
               </div>
@@ -166,7 +169,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">Telepon</p>
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">{t.about.identity.phone}</p>
                   <a href={`tel:${siteConfig.about.identity.phone}`} className="text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
                     {siteConfig.about.identity.phone}
                   </a>
@@ -183,7 +186,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">Email</p>
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">{t.about.identity.email}</p>
                   <a href={`mailto:${siteConfig.about.identity.email}`} className="text-sm font-semibold text-primary hover:text-primary-dark transition-colors break-all">
                     {siteConfig.about.identity.email}
                   </a>
@@ -201,7 +204,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">Alamat</p>
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">{t.about.identity.address}</p>
                   <p className="text-sm text-neutral-700 leading-relaxed">{siteConfig.about.identity.address}</p>
                 </div>
               </div>
@@ -217,7 +220,7 @@ export default function AboutPage() {
             {/* Visi - Compact & Modern */}
             <div>
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-4 font-semibold text-center lg:text-left">
-                Visi
+                {t.about.vision.title}
               </p>
               <div className="bg-gradient-to-br from-primary via-primary-dark to-primary/90 rounded-2xl p-6 md:p-7 text-white relative overflow-hidden">
                 {/* Pattern overlay */}
@@ -234,7 +237,7 @@ export default function AboutPage() {
               </div>
                   </div>
                   <p className="text-sm md:text-base leading-relaxed text-white/95">
-                {siteConfig.about.vision}
+                {t.about.vision.content}
               </p>
                 </div>
             </div>
@@ -243,10 +246,13 @@ export default function AboutPage() {
             {/* Misi - Compact Grid */}
             <div>
               <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-4 font-semibold text-center lg:text-left">
-                Misi
+                {t.about.mission.title}
               </p>
               <div className="space-y-3">
-                {siteConfig.about.mission.map((item, index) => (
+                {t.about.mission.items.map((text, index) => {
+                  const iconKeys = ['quality', 'partnership', 'innovation', 'people', 'contribution']
+                  const icon = iconKeys[index] as keyof typeof missionIcons
+                  return (
                   <div 
                     key={index} 
                     className="group bg-neutral-50 rounded-xl p-4 md:p-5 border border-neutral-200 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
@@ -254,17 +260,18 @@ export default function AboutPage() {
                     <div className="flex gap-3 md:gap-4 items-center">
                       <div className="flex-shrink-0 w-10 h-10 bg-primary/10 group-hover:bg-primary/20 rounded-lg flex items-center justify-center text-primary transition-colors">
                         <div className="w-5 h-5">
-                          {missionIcons[item.icon as keyof typeof missionIcons]}
+                          {missionIcons[icon]}
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-xs md:text-sm text-neutral-700 leading-relaxed text-left">
-                          {item.text}
+                          {text}
                         </p>
                       </div>
                     </div>
                   </div>
-                ))}
+                )
+                })}
               </div>
             </div>
           </div>
@@ -276,17 +283,22 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
-              Bidang Usaha & Produk Utama
+              {t.about.businessFields.title}
             </p>
             <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-3 leading-tight">
-              8 lini produk unggulan untuk mendukung kebutuhan industri Anda
+              {t.about.businessFields.subtitle}
             </h2>
             <p className="text-neutral-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Setiap produk dirancang dengan presisi dan inovasi untuk memberikan solusi terbaik
+              {t.about.businessFields.description}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {siteConfig.about.businessFields.map((product, index) => (
+            {siteConfig.about.businessFields.map((product, index) => {
+              // Safely get translated product name
+              const products = t?.about?.businessFields?.products
+              const translatedProduct = Array.isArray(products) ? products.find(p => p?.id === product.id) : null
+              const productName = translatedProduct?.name || product.name
+              return (
               <div
                 key={product.id}
                 className="group relative bg-white rounded-xl overflow-hidden border border-neutral-200 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -295,7 +307,7 @@ export default function AboutPage() {
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={product.image}
-                    alt={product.name}
+                    alt={productName}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -305,13 +317,14 @@ export default function AboutPage() {
                 {/* Content */}
                 <div className="p-3 md:p-4 bg-white">
                   <h4 className="text-xs md:text-sm font-bold text-neutral-900 text-center group-hover:text-primary transition-colors leading-tight">
-                    {product.name}
+                    {productName}
                   </h4>
                 </div>
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-primary rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-            ))}
+            )
+            })}
           </div>
         </div>
       </SectionWrapper>
@@ -321,17 +334,20 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-2 font-semibold">
-              Keunggulan Kami
+              {t.about.strengths.title}
             </p>
             <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 mb-3 leading-tight">
-              Tiga pilar utama yang membedakan NTI dalam industri
+              {t.about.strengths.subtitle}
             </h2>
             <p className="text-neutral-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Komitmen kami terhadap kualitas, inovasi, dan layanan terbaik
+              {t.about.strengths.description}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {siteConfig.about.strengths.map((strength, index) => (
+            {t.about.strengths.items.map((strength, index) => {
+              const iconKeys = ['portfolio', 'location', 'professional']
+              const icon = iconKeys[index] as keyof typeof strengthIcons
+              return (
             <div
               key={index}
                 className="group relative bg-gradient-to-br from-white to-neutral-50 rounded-2xl p-5 md:p-6 border border-neutral-200 hover:border-primary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -340,7 +356,7 @@ export default function AboutPage() {
                 <div className="relative mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto text-primary group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
                     <div className="w-8 h-8">
-                      {strengthIcons[strength.icon as keyof typeof strengthIcons]}
+                      {strengthIcons[icon]}
                     </div>
                   </div>
                   {/* Number Badge */}
@@ -362,7 +378,8 @@ export default function AboutPage() {
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-primary rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-            ))}
+            )
+            })}
             </div>
         </div>
       </SectionWrapper>
@@ -388,14 +405,14 @@ export default function AboutPage() {
                   <div className="flex items-center gap-2.5">
                     <div className="w-0.5 h-8 bg-white/90 rounded-full" />
                     <p className="text-xs uppercase tracking-[0.3em] text-white/70 font-semibold">
-                      Siap Bekerja Sama dengan NTI?
+                      {t.about.cta.eyebrow}
                     </p>
                   </div>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                    Hubungi kami hari ini untuk konsultasi dan solusi terbaik
+                    {t.about.cta.title}
                   </h2>
                   <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl">
-                    Tim kami siap membantu Anda menemukan solusi terbaik untuk kebutuhan industri Anda
+                    {t.about.cta.description}
                   </p>
                 </div>
                 <div className="flex-shrink-0 w-full lg:w-auto">
@@ -405,7 +422,7 @@ export default function AboutPage() {
                       className="group relative inline-flex items-center justify-center w-full lg:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-white text-primary font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-neutral-50 hover:shadow-xl hover:shadow-white/40 hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <span className="relative z-10 flex items-center gap-2 text-sm md:text-base">
-                        Hubungi Kami
+                        {t.about.cta.contactButton}
                         <svg
                           className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"
                           fill="none"
@@ -430,7 +447,7 @@ export default function AboutPage() {
                         <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                         </svg>
-                        Chat WhatsApp
+                        {t.about.cta.whatsappButton}
                       </span>
                       <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </a>
@@ -470,19 +487,19 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 mb-3 font-semibold">
-              Pertanyaan yang Sering Diajukan
+              {t.about.faq.title}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900 mb-2 leading-tight">
-              Informasi penting tentang NTI
+              {t.about.faq.subtitle}
             </h2>
           </div>
 
           <div className="space-y-2">
-            {/* FAQ 1 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
+            {t.about.faq.items.map((faq, index) => (
+            <details key={index} className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
               <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
                 <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Nikawa itu perusahaan apa?
+                  {faq.question}
                 </span>
                 <svg
                   className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
@@ -497,151 +514,10 @@ export default function AboutPage() {
                 </svg>
               </summary>
               <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                PT Nikawa Teknika Indonesia adalah distributor resmi komponen elektronik dan produk plastik industri yang berdiri sejak 13 Agustus 2014, berlokasi di Kawasan Industri Jababeka II, Cikarang, Bekasi.
-                </div>
-            </details>
-
-            {/* FAQ 2 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apa saja produk utama Nikawa?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <p className="mb-2">Kami menyediakan 8 lini produk:</p>
-                <ul className="space-y-1.5 list-none">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Komponen Elektronik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Perakitan PCBA</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>GSM/4G Modem</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>LED Road Studs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Resin Plastik</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Produk Injeksi Plastik Custom</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Smart Meter</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>Fiber Optic Gas Meter</span>
-                  </li>
-                </ul>
+                {faq.answer}
               </div>
             </details>
-
-            {/* FAQ 3 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah Nikawa melayani perakitan PCBA?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Ya. Kami memiliki partner EMS di Jababeka dengan 4 line SMT high-speed, standar IPC-A-610 Class 2 (bisa Class 3 untuk proyek medis/automotive safety).
-            </div>
-            </details>
-
-            {/* FAQ 4 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Apakah barang ready stock?
-                </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                Hampir semua komponen elektronik dan resin plastik ready stock di gudang Jababeka. PCBA prototype 3–7 hari, produksi massal 3–5 minggu.
-              </div>
-            </details>
-
-            {/* FAQ 5 */}
-            <details className="group bg-neutral-50 rounded-lg border border-neutral-200/80 overflow-hidden transition-all duration-200 hover:border-primary/40">
-              <summary className="flex items-center justify-between p-3 md:p-4 cursor-pointer list-none">
-                <span className="text-sm md:text-base font-semibold text-neutral-900 pr-3">
-                  Bagaimana cara menghubungi atau minta penawaran?
-                  </span>
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0 transform transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-3 md:px-4 pb-3 md:pb-4 text-sm text-neutral-600 leading-relaxed">
-                <div className="space-y-1.5">
-                  <p>
-                    <strong className="text-neutral-900">Email:</strong>{' '}
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-primary hover:underline">
-                      {siteConfig.contact.email}
-                    </a>
-                  </p>
-                  <p>
-                    <strong className="text-neutral-900">Telepon/WhatsApp:</strong>{' '}
-                    <a href={`tel:${siteConfig.contact.phone}`} className="text-primary hover:underline">
-                      {siteConfig.contact.phone}
-                    </a>
-                  </p>
-                  <p className="text-xs text-neutral-500 mt-2">
-                    Kami balas maksimal 1×24 jam (hari kerja).
-                  </p>
-                </div>
-              </div>
-            </details>
+            ))}
           </div>
         </div>
       </SectionWrapper>
