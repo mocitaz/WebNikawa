@@ -281,67 +281,38 @@ export default function Header() {
             <div className="hidden lg:block relative language-dropdown">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className={`group relative px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 ${
+                className={`relative px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-150 flex items-center gap-2 ${
                   shouldBeTransparent
-                    ? 'text-white/85 hover:text-white hover:bg-white/10'
-                    : 'text-neutral-600 hover:text-primary hover:bg-neutral-100/60'
+                    ? 'text-white/90 hover:text-white hover:bg-white/10'
+                    : 'text-neutral-700 hover:text-primary hover:bg-neutral-100'
                 }`}
                 aria-label="Select language"
                 aria-expanded={isLangMenuOpen}
               >
-                {/* Globe Icon with Animation */}
-                <div className="relative">
-                  <svg
-                    className={`w-4 h-4 transition-all duration-200 ${
-                      isLangMenuOpen ? 'rotate-180 scale-110' : 'group-hover:scale-110 group-hover:rotate-12'
-                    } ${shouldBeTransparent ? 'text-white' : 'text-primary'}`}
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                  {/* Glow effect on hover */}
-                  <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 blur-sm ${
-                    shouldBeTransparent ? 'bg-white/30' : 'bg-primary/30'
-                  }`} />
-                </div>
-                
                 {/* Flag Icon */}
-                <div className="w-4 h-3 rounded-sm overflow-hidden transition-transform duration-200 group-hover:scale-110 shadow-sm border border-current/20">
+                <div className="w-4 h-3 rounded overflow-hidden flex-shrink-0 border border-current/20">
                   <FlagIcon code={language} className="w-full h-full" />
                 </div>
                 
                 {/* Language Name */}
-                <span className="hidden xl:inline font-semibold">
+                <span className="font-medium">
                   {languages.find(l => l.code === language)?.name}
                 </span>
                 
                 {/* Dropdown Arrow */}
                 <svg
-                  className={`w-3 h-3 transition-all duration-200 ${
+                  className={`w-3 h-3 flex-shrink-0 transition-transform duration-150 ${
                     isLangMenuOpen ? 'rotate-180' : ''
-                  } ${shouldBeTransparent ? 'text-white/60' : 'text-neutral-400'}`}
+                  } ${shouldBeTransparent ? 'text-white/70' : 'text-neutral-500'}`}
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2.5"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
-                
-                {/* Active indicator dot */}
-                {isLangMenuOpen && (
-                  <div className={`absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full ${
-                    shouldBeTransparent ? 'bg-white' : 'bg-primary'
-                  } animate-pulse`} />
-                )}
               </button>
 
               {/* Language Dropdown Menu */}
@@ -352,37 +323,12 @@ export default function Header() {
                     onClick={() => setIsLangMenuOpen(false)}
                   />
                   <div
-                    className={`absolute right-0 mt-1.5 w-40 rounded-xl shadow-2xl border z-50 overflow-hidden animate-fade-in ${
+                    className={`absolute right-0 mt-1.5 w-36 rounded-lg shadow-lg border z-50 overflow-hidden ${
                       shouldBeTransparent
-                        ? 'bg-neutral-900 border-neutral-700 shadow-neutral-900/60'
-                        : 'bg-white border-neutral-200 shadow-neutral-300/50'
+                        ? 'bg-neutral-900 border-neutral-700'
+                        : 'bg-white border-neutral-200'
                     }`}
                   >
-                    {/* Header */}
-                    <div className={`px-3 py-2 border-b ${
-                      shouldBeTransparent ? 'border-neutral-700/40' : 'border-neutral-200/60'
-                    }`}>
-                      <div className="flex items-center gap-1.5">
-                        <svg
-                          className={`w-3.5 h-3.5 ${shouldBeTransparent ? 'text-white/60' : 'text-neutral-400'}`}
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2.5"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                        </svg>
-                        <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                          shouldBeTransparent ? 'text-white/60' : 'text-neutral-400'
-                        }`}>
-                          {t.common.language}
-                        </span>
-                      </div>
-                    </div>
-                    
                     {/* Language Options */}
                     <div className="py-1">
                       {languages.map((lang) => (
@@ -392,20 +338,18 @@ export default function Header() {
                             setLanguage(lang.code)
                             setIsLangMenuOpen(false)
                           }}
-                          className={`group relative w-full text-left px-3 py-2 text-xs font-semibold flex items-center gap-2 transition-all duration-150 ${
+                          className={`w-full text-left px-3 py-2 text-xs font-medium flex items-center gap-2.5 transition-colors duration-150 ${
                             language === lang.code
                               ? shouldBeTransparent
-                                ? 'text-white bg-primary/30'
-                                : 'text-primary bg-primary/10 font-bold'
+                                ? 'text-white bg-primary/40'
+                                : 'text-primary bg-primary/10'
                               : shouldBeTransparent
-                              ? 'text-white/75 hover:text-white hover:bg-white/10'
-                              : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
+                              ? 'text-white/80 hover:text-white hover:bg-white/10'
+                              : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'
                           }`}
                         >
-                          {/* Flag Icon with animation */}
-                          <div className={`w-5 h-4 rounded-sm overflow-hidden transition-transform duration-150 shadow-sm border border-current/20 ${
-                            language === lang.code ? 'scale-110' : 'group-hover:scale-110'
-                          }`}>
+                          {/* Flag Icon */}
+                          <div className="w-5 h-4 rounded overflow-hidden flex-shrink-0 border border-current/20">
                             <FlagIcon code={lang.code} className="w-full h-full" />
                           </div>
                           
@@ -415,27 +359,18 @@ export default function Header() {
                           {/* Checkmark for active language */}
                           {language === lang.code && (
                             <svg
-                              className={`w-3.5 h-3.5 transition-all duration-150 ${
+                              className={`w-3.5 h-3.5 flex-shrink-0 ${
                                 shouldBeTransparent ? 'text-white' : 'text-primary'
                               }`}
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              strokeWidth="3"
+                              strokeWidth="2.5"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                             >
                               <path d="M5 13l4 4L19 7" />
                             </svg>
-                          )}
-                          
-                          {/* Hover gradient effect */}
-                          {language !== lang.code && (
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150 ${
-                              shouldBeTransparent 
-                                ? 'bg-gradient-to-r from-white/5 to-transparent' 
-                                : 'bg-gradient-to-r from-primary/5 to-transparent'
-                            }`} />
                           )}
                         </button>
                       ))}
@@ -498,28 +433,9 @@ export default function Header() {
             }`}
           >
             {/* Language Selector - Mobile */}
-            <div className={`px-3 py-2 border-b ${
+            <div className={`px-3 py-2.5 border-b ${
               shouldBeTransparent ? 'border-neutral-700/30' : 'border-neutral-200'
             }`}>
-              <div className="flex items-center gap-1.5 mb-2">
-                <svg
-                  className={`w-3.5 h-3.5 ${shouldBeTransparent ? 'text-white/60' : 'text-neutral-400'}`}
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-                <p className={`text-[10px] font-bold uppercase tracking-wider ${
-                  shouldBeTransparent ? 'text-white/60' : 'text-neutral-400'
-                }`}>
-                  {t.common.language}
-                </p>
-              </div>
               <div className="flex gap-1.5">
                 {languages.map((lang) => (
                   <button
@@ -527,31 +443,29 @@ export default function Header() {
                     onClick={() => {
                       setLanguage(lang.code)
                     }}
-                    className={`group relative flex-1 px-2.5 py-2 rounded-lg text-xs font-semibold transition-all duration-150 flex items-center justify-center gap-1.5 ${
+                    className={`flex-1 px-2.5 py-2 rounded-md text-xs font-medium transition-colors duration-150 flex items-center justify-center gap-1.5 ${
                       language === lang.code
                         ? shouldBeTransparent
-                          ? 'text-white bg-primary/30 shadow-md shadow-primary/20'
-                          : 'text-primary bg-primary/10 shadow-sm shadow-primary/10'
+                          ? 'text-white bg-primary/40'
+                          : 'text-primary bg-primary/10'
                         : shouldBeTransparent
-                        ? 'text-white/70 hover:text-white hover:bg-white/10'
-                        : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
+                        ? 'text-white/80 hover:text-white hover:bg-white/10'
+                        : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'
                     }`}
                   >
-                    <div className={`w-5 h-4 rounded-sm overflow-hidden transition-transform duration-150 shadow-sm border border-current/20 ${
-                      language === lang.code ? 'scale-110' : 'group-hover:scale-110'
-                    }`}>
+                    <div className="w-5 h-4 rounded overflow-hidden flex-shrink-0 border border-current/20">
                       <FlagIcon code={lang.code} className="w-full h-full" />
                     </div>
                     <span>{lang.name}</span>
                     {language === lang.code && (
                       <svg
-                        className={`w-3 h-3 transition-all duration-150 ${
+                        className={`w-3.5 h-3.5 flex-shrink-0 ${
                           shouldBeTransparent ? 'text-white' : 'text-primary'
                         }`}
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="3"
+                        strokeWidth="2.5"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >

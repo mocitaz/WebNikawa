@@ -17,13 +17,17 @@ export default function Footer() {
     { href: '/downloads', label: t?.nav?.downloads || 'Download' },
   ]
 
+  const getProductName = (productId: string) => {
+    return t?.products?.items?.find((item: any) => item.id === productId)?.name || productId
+  }
+
   const productCategories = [
-    { key: 'Electronics', name: t?.products?.categories?.Electronics || 'Electronic Components' },
-    { key: 'Manufacturing', name: 'PCBA' },
-    { key: 'Electronics', name: 'GSM Modem' },
-    { key: 'Materials', name: t?.products?.categories?.Materials || 'Plastic Resin' },
-    { key: 'Manufacturing', name: 'Plastic Injection' },
-    { key: 'Infrastructure', name: 'Smart Water Meter' },
+    { key: 'Electronics', name: getProductName('electronic-components') },
+    { key: 'Manufacturing', name: getProductName('pcba') },
+    { key: 'Electronics', name: getProductName('gsm-modem') },
+    { key: 'Materials', name: getProductName('plastic-resin') },
+    { key: 'Manufacturing', name: getProductName('plastic-injection') },
+    { key: 'Infrastructure', name: getProductName('smart-water-meter') },
   ]
 
   return (
