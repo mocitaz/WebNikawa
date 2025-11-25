@@ -136,7 +136,8 @@ export default function Header() {
   const isHomePage = pathname === '/'
   const isAboutPage = pathname === '/about'
   const hasHeroImage = isHomePage || isAboutPage
-  const shouldBeTransparent = hasHeroImage && isInHeroSection
+  // Don't make transparent for about page - always use normal colors
+  const shouldBeTransparent = isHomePage && isInHeroSection
 
   // Get page-specific accent color
   const getPageAccent = () => {
@@ -294,7 +295,7 @@ export default function Header() {
                     className={`absolute right-0 mt-2 w-44 rounded-xl shadow-xl border z-50 overflow-hidden backdrop-blur-md ${
                       shouldBeTransparent
                         ? 'bg-neutral-900/95 border-neutral-700/50'
-                        : 'bg-white/98 border-neutral-200/80'
+                        : 'bg-white border-neutral-200'
                     }`}
                   >
                     {/* Language Options */}
@@ -384,7 +385,7 @@ export default function Header() {
                 stroke="currentColor"
               >
                 <path d="M6 18L18 6M6 6l12 12" />
-              </svg>
+            </svg>
             </div>
           </button>
           </div>

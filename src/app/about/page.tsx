@@ -130,10 +130,10 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="text-neutral-600 text-sm md:text-base leading-relaxed space-y-3">
-                  <p>
+                  <p className="text-justify">
                     PT Nikawa Teknika Indonesia didirikan pada tanggal <span className="font-bold text-neutral-900">13 Agustus 2014</span> dan berlokasi di <span className="font-bold text-neutral-900">Kawasan Industri Jababeka II, Cikarang, Bekasi</span>. Perusahaan bergerak di bidang <span className="font-bold text-neutral-900">distribusi dan penyediaan berbagai komponen elektronik serta produk plastik</span> untuk kebutuhan industri.
                   </p>
-                  <p>
+                  <p className="text-justify">
                     Dengan operasional yang berbasis di kawasan industri strategis, PT Nikawa Teknika Indonesia mampu melayani berbagai sektor manufaktur dan teknologi yang membutuhkan <span className="font-bold text-neutral-900">produk berkualitas tinggi serta layanan yang handal</span>.
                   </p>
                 </div>
