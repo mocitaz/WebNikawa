@@ -101,18 +101,43 @@ export default function AboutPage() {
 
       {/* 2. Profil Perusahaan */}
       <SectionWrapper className="bg-neutral-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
-            <div className="p-5 md:p-6 lg:p-8 xl:p-12 space-y-3 md:space-y-4">
-              <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold">
-                {t.about.profile.title}
-              </p>
-              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight">
-                {t.about.profile.heading}
-              </h2>
-              <p className="text-neutral-600 text-sm md:text-base leading-relaxed max-w-4xl">
-                {t.about.profile.content}
-              </p>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-6 md:gap-8 lg:gap-12">
+            {/* Image - Left Side */}
+            <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg">
+              <Image
+                src="/images/about/company-profile.jpg"
+                alt="PT Nikawa Teknika Indonesia - Profil Perusahaan"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 via-transparent to-transparent lg:hidden" />
+            </div>
+
+            {/* Content - Right Side */}
+            <div className="flex flex-col justify-center">
+              <div className="space-y-4 md:space-y-5">
+                <div>
+                  <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold mb-2">
+                    {t.about.profile.title}
+                  </p>
+                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight">
+                    Selamat Datang di
+                    <br />
+                    PT Nikawa Teknika Indonesia
+                  </h2>
+                </div>
+                
+                <div className="text-neutral-600 text-sm md:text-base leading-relaxed space-y-3">
+                  <p>
+                    PT Nikawa Teknika Indonesia didirikan pada tanggal <span className="font-bold text-neutral-900">13 Agustus 2014</span> dan berlokasi di <span className="font-bold text-neutral-900">Kawasan Industri Jababeka II, Cikarang, Bekasi</span>. Perusahaan bergerak di bidang <span className="font-bold text-neutral-900">distribusi dan penyediaan berbagai komponen elektronik serta produk plastik</span> untuk kebutuhan industri.
+                  </p>
+                  <p>
+                    Dengan operasional yang berbasis di kawasan industri strategis, PT Nikawa Teknika Indonesia mampu melayani berbagai sektor manufaktur dan teknologi yang membutuhkan <span className="font-bold text-neutral-900">produk berkualitas tinggi serta layanan yang handal</span>.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

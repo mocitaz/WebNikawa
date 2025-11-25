@@ -104,52 +104,10 @@ export default function Header() {
     }
   }, [pathname])
 
-  // Flag Icon Components
-  const FlagIcon = ({ code, className }: { code: string; className?: string }) => {
-    if (code === 'id') {
-      return (
-        <svg className={className} viewBox="0 0 640 480" fill="none">
-          <rect width="640" height="240" fill="#E70011"/>
-          <rect y="240" width="640" height="240" fill="#FFFFFF"/>
-        </svg>
-      )
-    }
-    if (code === 'en') {
-      return (
-        <svg className={className} viewBox="0 0 640 480" fill="none">
-          <rect width="640" height="480" fill="#012169"/>
-          <path d="M0 0l640 480M640 0L0 480" stroke="#FFF" strokeWidth="60"/>
-          <path d="M0 0l640 480M640 0L0 480" stroke="#C8102E" strokeWidth="40"/>
-          <path d="M320 0v480M0 240h640" stroke="#FFF" strokeWidth="100"/>
-          <path d="M320 0v480M0 240h640" stroke="#C8102E" strokeWidth="60"/>
-        </svg>
-      )
-    }
-    if (code === 'zh') {
-      return (
-        <svg className={className} viewBox="0 0 640 480" fill="none">
-          <rect width="640" height="480" fill="#DE2910"/>
-          <g fill="#FFDE00">
-            <rect x="128" y="128" width="42.7" height="42.7"/>
-            <rect x="213.3" y="128" width="42.7" height="42.7"/>
-            <rect x="298.7" y="128" width="42.7" height="42.7"/>
-            <rect x="128" y="213.3" width="42.7" height="42.7"/>
-            <rect x="213.3" y="213.3" width="42.7" height="42.7"/>
-            <rect x="298.7" y="213.3" width="42.7" height="42.7"/>
-            <rect x="128" y="298.7" width="42.7" height="42.7"/>
-            <rect x="213.3" y="298.7" width="42.7" height="42.7"/>
-            <rect x="298.7" y="298.7" width="42.7" height="42.7"/>
-          </g>
-        </svg>
-      )
-    }
-    return null
-  }
-
   const languages = [
-    { code: 'id' as const, name: 'ID' },
-    { code: 'en' as const, name: 'EN' },
-    { code: 'zh' as const, name: '中文' },
+    { code: 'id' as const, name: 'ID', label: 'Indonesia' },
+    { code: 'en' as const, name: 'EN', label: 'English' },
+    { code: 'zh' as const, name: '中文', label: '中文' },
   ]
 
   const navItems = [
@@ -281,7 +239,7 @@ export default function Header() {
             <div className="hidden lg:block relative language-dropdown">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className={`relative px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-150 flex items-center gap-2 ${
+                className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-2 ${
                   shouldBeTransparent
                     ? 'text-white/90 hover:text-white hover:bg-white/10'
                     : 'text-neutral-700 hover:text-primary hover:bg-neutral-100'
@@ -289,25 +247,35 @@ export default function Header() {
                 aria-label="Select language"
                 aria-expanded={isLangMenuOpen}
               >
-                {/* Flag Icon */}
-                <div className="w-4 h-3 rounded overflow-hidden flex-shrink-0 border border-current/20">
-                  <FlagIcon code={language} className="w-full h-full" />
-                </div>
+                {/* Globe Icon */}
+                <svg
+                  className={`w-4 h-4 flex-shrink-0 ${shouldBeTransparent ? 'text-white/80' : 'text-neutral-600'}`}
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" />
+                  <path d="M3 12c0 2.485 4.03 4.5 9 4.5s9-2.015 9-4.5M3 12c0-2.485 4.03-4.5 9-4.5s9 2.015 9 4.5" />
+                  <path d="M12 3v18" />
+                </svg>
                 
                 {/* Language Name */}
-                <span className="font-medium">
+                <span className="font-semibold">
                   {languages.find(l => l.code === language)?.name}
                 </span>
                 
                 {/* Dropdown Arrow */}
                 <svg
-                  className={`w-3 h-3 flex-shrink-0 transition-transform duration-150 ${
+                  className={`w-3 h-3 flex-shrink-0 transition-transform duration-200 ${
                     isLangMenuOpen ? 'rotate-180' : ''
                   } ${shouldBeTransparent ? 'text-white/70' : 'text-neutral-500'}`}
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
@@ -323,14 +291,14 @@ export default function Header() {
                     onClick={() => setIsLangMenuOpen(false)}
                   />
                   <div
-                    className={`absolute right-0 mt-1.5 w-36 rounded-lg shadow-lg border z-50 overflow-hidden ${
+                    className={`absolute right-0 mt-2 w-44 rounded-xl shadow-xl border z-50 overflow-hidden backdrop-blur-md ${
                       shouldBeTransparent
-                        ? 'bg-neutral-900 border-neutral-700'
-                        : 'bg-white border-neutral-200'
+                        ? 'bg-neutral-900/95 border-neutral-700/50'
+                        : 'bg-white/98 border-neutral-200/80'
                     }`}
                   >
                     {/* Language Options */}
-                    <div className="py-1">
+                    <div className="py-1.5">
                       {languages.map((lang) => (
                         <button
                           key={lang.code}
@@ -338,34 +306,33 @@ export default function Header() {
                             setLanguage(lang.code)
                             setIsLangMenuOpen(false)
                           }}
-                          className={`w-full text-left px-3 py-2 text-xs font-medium flex items-center gap-2.5 transition-colors duration-150 ${
+                          className={`w-full text-left px-4 py-2.5 text-sm font-medium flex items-center justify-between transition-all duration-200 ${
                             language === lang.code
                               ? shouldBeTransparent
-                                ? 'text-white bg-primary/40'
+                                ? 'text-white bg-primary/50'
                                 : 'text-primary bg-primary/10'
                               : shouldBeTransparent
                               ? 'text-white/80 hover:text-white hover:bg-white/10'
                               : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'
                           }`}
                         >
-                          {/* Flag Icon */}
-                          <div className="w-5 h-4 rounded overflow-hidden flex-shrink-0 border border-current/20">
-                            <FlagIcon code={lang.code} className="w-full h-full" />
+                          <div className="flex items-center gap-3">
+                            {/* Language code/name */}
+                            <span className="font-semibold min-w-[2.5rem]">{lang.name}</span>
+                            {/* Language label */}
+                            <span className="text-xs opacity-70">{lang.label}</span>
                           </div>
-                          
-                          {/* Language name */}
-                          <span className="flex-1">{lang.name}</span>
                           
                           {/* Checkmark for active language */}
                           {language === lang.code && (
                             <svg
-                              className={`w-3.5 h-3.5 flex-shrink-0 ${
+                              className={`w-4 h-4 flex-shrink-0 ${
                                 shouldBeTransparent ? 'text-white' : 'text-primary'
                               }`}
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              strokeWidth="2.5"
+                              strokeWidth="3"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                             >
@@ -425,47 +392,30 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div
-            className={`lg:hidden animate-fade-in ${
-              shouldBeTransparent
-                ? 'bg-neutral-900/98 backdrop-blur-md border-t border-neutral-700/30'
-                : 'border-t border-neutral-200 bg-white/98 backdrop-blur-md'
-            }`}
-          >
+          <div className="lg:hidden animate-fade-in border-t border-neutral-200 bg-white backdrop-blur-md">
             {/* Language Selector - Mobile */}
-            <div className={`px-3 py-2.5 border-b ${
-              shouldBeTransparent ? 'border-neutral-700/30' : 'border-neutral-200'
-            }`}>
-              <div className="flex gap-1.5">
+            <div className="px-3 py-3 border-b border-neutral-200">
+              <div className="flex gap-2">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => {
                       setLanguage(lang.code)
                     }}
-                    className={`flex-1 px-2.5 py-2 rounded-md text-xs font-medium transition-colors duration-150 flex items-center justify-center gap-1.5 ${
+                    className={`flex-1 px-3 py-2.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
                       language === lang.code
-                        ? shouldBeTransparent
-                          ? 'text-white bg-primary/40'
-                          : 'text-primary bg-primary/10'
-                        : shouldBeTransparent
-                        ? 'text-white/80 hover:text-white hover:bg-white/10'
+                        ? 'text-white bg-primary shadow-md'
                         : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'
                     }`}
                   >
-                    <div className="w-5 h-4 rounded overflow-hidden flex-shrink-0 border border-current/20">
-                      <FlagIcon code={lang.code} className="w-full h-full" />
-                    </div>
                     <span>{lang.name}</span>
                     {language === lang.code && (
                       <svg
-                        className={`w-3.5 h-3.5 flex-shrink-0 ${
-                          shouldBeTransparent ? 'text-white' : 'text-primary'
-                        }`}
+                        className="w-3.5 h-3.5 flex-shrink-0 text-white"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="2.5"
+                        strokeWidth="3"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
@@ -490,11 +440,7 @@ export default function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className={`group relative block py-3 rounded-xl px-4 transition-all duration-200 text-sm font-bold ${
                       isActive
-                        ? shouldBeTransparent
-                          ? 'text-white bg-primary/40 shadow-lg shadow-primary/30'
-                          : 'text-primary bg-primary/15 shadow-md shadow-primary/20'
-                        : shouldBeTransparent
-                        ? 'text-white/80 hover:text-white hover:bg-white/10'
+                        ? 'text-white bg-primary shadow-md shadow-primary/20'
                         : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'
                     }`}
                   >
@@ -503,24 +449,18 @@ export default function Header() {
                         isActive ? 'font-bold' : 'font-semibold'
                       }`}>{item.label}</span>
                       {isActive && (
-                        <div className={`ml-auto w-2.5 h-2.5 rounded-full bg-gradient-to-r ${pageAccent} shadow-md ${
-                          shouldBeTransparent ? 'shadow-white/40' : 'shadow-primary/40'
-                        } animate-pulse`} />
+                        <div className={`ml-auto w-2.5 h-2.5 rounded-full bg-white shadow-md animate-pulse`} />
                       )}
                     </div>
                     {/* Active indicator line with gradient - always visible when active */}
                     {isActive && (
                       <div className="absolute left-0 top-0 bottom-0 w-1.5 rounded-r-full overflow-hidden z-20">
-                        <div className={`w-full h-full bg-gradient-to-b ${pageAccent} rounded-r-full shadow-md ${
-                          shouldBeTransparent ? 'shadow-white/40' : 'shadow-primary/40'
-                        }`} />
+                        <div className="w-full h-full bg-white rounded-r-full shadow-md" />
                       </div>
                     )}
                     {/* Hover gradient effect */}
                     {!isActive && (
-                      <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gradient-to-r ${
-                        shouldBeTransparent ? 'from-white/15 to-transparent' : 'from-primary/15 to-transparent'
-                      }`} />
+                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gradient-to-r from-primary/15 to-transparent" />
                     )}
                   </Link>
                 )

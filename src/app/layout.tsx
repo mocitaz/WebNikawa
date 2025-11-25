@@ -1,15 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Poppins, Noto_Sans_SC } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import FontProvider from '@/components/providers/FontProvider'
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
 })
 
 const poppins = Poppins({
@@ -17,6 +21,18 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-poppins',
   display: 'swap',
+  preload: false,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+})
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-noto-sans-sc',
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'SimHei', 'sans-serif'],
 })
 
 export const metadata: Metadata = {
@@ -42,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="id" className={`${inter.variable} ${poppins.variable} ${notoSansSC.variable}`}>
       <head>
         {/* Favicons */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -54,9 +70,11 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+          <FontProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </FontProvider>
         </LanguageProvider>
       </body>
     </html>

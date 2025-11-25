@@ -21,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
+          'var(--font-inter)',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
@@ -28,6 +29,16 @@ module.exports = {
           'Roboto',
           '"Helvetica Neue"',
           'Arial',
+          'sans-serif',
+        ],
+        chinese: [
+          'var(--font-noto-sans-sc)',
+          '"Noto Sans SC"',
+          '"PingFang SC"',
+          '"Hiragino Sans GB"',
+          '"Microsoft YaHei"',
+          '"WenQuanYi Micro Hei"',
+          '"SimHei"',
           'sans-serif',
         ],
       },

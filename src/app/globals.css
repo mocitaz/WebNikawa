@@ -7,9 +7,49 @@
     @apply border-neutral-300;
   }
   
+  /* Base font stack - consistent across all platforms */
+  html {
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   body {
     @apply bg-white text-neutral-900 antialiased;
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: 'kern' 1;
+    font-kerning: normal;
+  }
+
+  /* Chinese font stack - consistent across all platforms */
+  html.font-chinese,
+  body.font-chinese,
+  .font-chinese {
+    font-family: var(--font-noto-sans-sc), 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'SimHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Default font stack - consistent across all platforms */
+  html.font-default,
+  body.font-default,
+  .font-default {
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Ensure all text elements inherit font consistently */
+  h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, label, li, td, th {
+    font-family: inherit;
+  }
+  
+  /* Force font consistency for specific elements that might override */
+  button, input, textarea, select {
+    font-family: inherit !important;
   }
 
   h1, h2, h3, h4, h5, h6 {

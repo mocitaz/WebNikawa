@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <>
       {/* Hero Section */}
-      <SectionWrapper className="bg-gradient-to-br from-primary/5 via-white to-primary/5 pt-20 md:pt-24 lg:pt-28 pb-6 md:pb-8">
+      <SectionWrapper className="bg-gradient-to-br from-primary/5 via-white to-primary/5 pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-5 md:mb-6">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-2xl mb-3 md:mb-4">

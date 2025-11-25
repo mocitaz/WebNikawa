@@ -40,7 +40,7 @@ export default function ProductDetailContent({ productId }: ProductDetailContent
   return (
     <>
       {/* Hero Section - Compact & Modern */}
-      <SectionWrapper className="bg-gradient-to-br from-neutral-50 via-white to-neutral-50 pt-20 md:pt-24 lg:pt-28 pb-6 md:pb-8">
+      <SectionWrapper className="bg-gradient-to-br from-neutral-50 via-white to-neutral-50 pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="mb-3 md:mb-4">
