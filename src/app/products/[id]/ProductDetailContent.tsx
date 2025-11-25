@@ -44,7 +44,7 @@ export default function ProductDetailContent({ productId }: ProductDetailContent
         <div className="max-w-7xl mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="mb-3 md:mb-4">
-            <div className="flex items-center gap-1.5 md:gap-2 text-xs text-neutral-500 overflow-x-auto">
+            <div className="flex items-center gap-1.5 md:gap-2 text-xs text-neutral-500 overflow-x-auto scrollbar-hide">
               <Link href="/" className="hover:text-primary transition-colors whitespace-nowrap">
                 {t?.productDetailPage?.breadcrumb?.home || 'Beranda'}
               </Link>
@@ -205,8 +205,8 @@ export default function ProductDetailContent({ productId }: ProductDetailContent
               <div className="space-y-2.5">
                 {specifications.map((spec: { label: string; value: string }, index: number) => (
                   <div key={index} className="flex flex-col sm:flex-row sm:items-center gap-1.5 pb-2.5 border-b border-neutral-100 last:border-0 last:pb-0">
-                    <dt className="text-xs font-bold text-neutral-700 min-w-[120px] uppercase tracking-wide">{spec.label}</dt>
-                    <dd className="text-sm text-neutral-600 flex-1">{spec.value}</dd>
+                    <dt className="text-xs font-bold text-neutral-700 sm:min-w-[120px] uppercase tracking-wide">{spec.label}</dt>
+                    <dd className="text-sm text-neutral-600 flex-1 break-words">{spec.value}</dd>
                   </div>
                 ))}
               </div>

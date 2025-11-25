@@ -122,7 +122,7 @@ export default function AboutPage() {
                   <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary/70 font-semibold mb-2">
                     {t.about.profile.title}
                   </p>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-neutral-900 leading-tight break-words">
                     Selamat Datang di
                     <br />
                     PT Nikawa Teknika Indonesia
