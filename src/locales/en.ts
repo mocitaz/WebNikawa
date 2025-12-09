@@ -118,6 +118,12 @@ export const translations = {
     },
     items: [
       {
+        id: 'hero-mc30-01',
+        name: 'Hero-MC30-01',
+        description: 'Cost-effective 1+1 ch Mini AI Dashcam for commercial fleet',
+        category: 'Electronics',
+      },
+      {
         id: 'plastic-injection',
         name: 'Plastic Injection Products',
         description: 'Injection molding products from various types of plastics',
@@ -496,6 +502,44 @@ export const translations = {
     },
   },
   productDetails: {
+    'hero-mc30-01': {
+      overview: 'Hero-MC30-01 is a cost-effective 1+1 ch Mini AI Dashcam for commercial fleets. Featuring easy installation, compact design, and a detachable 2nd camera for flexible extension.',
+      features: [
+        'Cost-effective and affordable',
+        'Easy and flexible installation',
+        'Compact design, least blocking for driver view',
+        'Detachable 2nd camera for flexible extension',
+        'AI Features: Face Recognition & DMS (Driver Monitoring System)',
+        'ADAS (Advanced Driving Assistance System)',
+        'Built-in 4G & Wi-Fi',
+        'Supports 1080p dual channel video',
+      ],
+      specifications: [
+        { label: 'Model', value: 'Hero-MC30-01 H' },
+        { label: 'OS', value: 'Embedded Linux' },
+        { label: 'Camera', value: 'Front: 1080p@30fps (116°), Detachable: 1080p@30fps' },
+        { label: 'AI Features', value: 'Face Recognition, DMS, ADAS (FCW, HMW, PCW, LDW)' },
+        { label: 'Connectivity', value: '4G, Wi-Fi 2.4GHz, GNSS' },
+        { label: 'Sensors', value: '6-axis G-sensor' },
+        { label: 'Storage', value: 'Micro SD up to 1TB' },
+        { label: 'Power', value: '9-36V DC' },
+        { label: 'Dimensions', value: '110 x 67.8 x 29.5 mm' },
+      ],
+      applications: [
+        'Commercial Fleet Management',
+        'Logistics & Transportation',
+        'Taxi & Ride-hailing',
+        'Corporate Operations Vehicles',
+        'Driver Safety Monitoring',
+      ],
+      benefits: [
+        'Improves driver safety',
+        'Real-time fleet monitoring',
+        'Video evidence for incidents',
+        'Cost-effective operations',
+        'Easy, non-intrusive installation',
+      ],
+    },
     'plastic-injection': {
       overview: 'We provide high-precision injection molding services for various industrial needs. Using the latest technology and quality materials, we produce custom plastic products according to your specifications with international quality standards.',
       features: [

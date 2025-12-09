@@ -179,6 +179,12 @@ export const translations = {
     },
     items: [
       {
+        id: 'hero-mc30-01',
+        name: 'Hero-MC30-01',
+        description: 'Dashcam AI Mini 1+1 channel yang hemat biaya untuk armada komersial',
+        category: 'Electronics',
+      },
+      {
         id: 'plastic-injection',
         name: 'Plastic Injection Products',
         description: 'Produk hasil injection molding dari berbagai jenis plastik',
@@ -496,6 +502,44 @@ export const translations = {
     },
   },
   productDetails: {
+    'hero-mc30-01': {
+      overview: 'Hero-MC30-01 adalah dashcam AI mini yang hemat biaya dan efektif untuk manajemen armada komersial. Dilengkapi dengan fitur instalasi yang mudah, desain ringkas, dan kamera kedua yang dapat dilepas untuk fleksibilitas ekstensi.',
+      features: [
+        'Lebih terjangkau dan hemat biaya',
+        'Instalasi mudah dan fleksibel',
+        'Desain ringkas, tidak menghalangi pandangan pengemudi',
+        'Kamera kedua yang dapat dilepas untuk ekstensi fleksibel',
+        'Fitur AI: Face Recognition & DMS (Driver Monitoring System)',
+        'ADAS (Advanced Driving Assistance System)',
+        'Built-in 4G & Wi-Fi',
+        'Mendukung video 1080p dual channel',
+      ],
+      specifications: [
+        { label: 'Model', value: 'Hero-MC30-01 H' },
+        { label: 'OS', value: 'Embedded Linux' },
+        { label: 'Kamera', value: 'Depan: 1080p@30fps (116°), Lepas-pasang: 1080p@30fps' },
+        { label: 'Fitur AI', value: 'Face Recognition, DMS, ADAS (FCW, HMW, PCW, LDW)' },
+        { label: 'Konektivitas', value: '4G, Wi-Fi 2.4GHz, GNSS' },
+        { label: 'Sensor', value: '6-axis G-sensor' },
+        { label: 'Penyimpanan', value: 'Micro SD hingga 1TB' },
+        { label: 'Daya', value: '9-36V DC' },
+        { label: 'Dimensi', value: '110 x 67.8 x 29.5 mm' },
+      ],
+      applications: [
+        'Manajemen Armada Komersial',
+        'Logistik & Transportasi',
+        'Taksi & Transportasi Online',
+        'Kendaraan Operasional Perusahaan',
+        'Monitoring Keselamatan Pengemudi',
+      ],
+      benefits: [
+        'Meningkatkan keselamatan pengemudi',
+        'Pemantauan armada real-time',
+        'Bukti video saat insiden',
+        'Hemat biaya operasional',
+        'Instalasi yang mudah dan tidak mengganggu',
+      ],
+    },
     'plastic-injection': {
       overview: 'Kami menyediakan jasa injection molding dengan presisi tinggi untuk berbagai kebutuhan industri. Menggunakan teknologi terkini dan material berkualitas, kami menghasilkan produk plastik custom sesuai spesifikasi Anda dengan standar kualitas internasional.',
       features: [
