@@ -178,12 +178,7 @@ export const translations = {
       Infrastructure: 'Infrastructure',
     },
     items: [
-      {
-        id: 'hero-mc30-01',
-        name: 'Hero-MC30-01',
-        description: 'Dashcam AI Mini 1+1 channel yang hemat biaya untuk armada komersial',
-        category: 'Electronics',
-      },
+
       {
         id: 'plastic-injection',
         name: 'Plastic Injection Products',

@@ -108,61 +108,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Featured Product (First Item) */}
-        <div className="mb-6 md:mb-8">
-          {siteConfig.products.length > 0 && (
-            <div className="relative group overflow-hidden rounded-2xl md:rounded-3xl bg-white border border-neutral-100 shadow-xl hover:shadow-2xl hover:border-primary/20 transition-all duration-500">
-              <div className="grid grid-cols-1 lg:grid-cols-[0.8fr,1.2fr] h-auto lg:h-[22rem]">
-                {/* Image Section */}
-                <div className="relative h-64 lg:h-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{
-                      backgroundImage: `url(${siteConfig.products[0].image})`,
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/5 to-transparent" />
-                </div>
-
-                {/* Content Section */}
-                <div className="relative p-6 md:p-8 lg:px-10 lg:py-8 flex flex-col justify-center items-start bg-white">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <span className="inline-flex items-center gap-2 px-2.5 py-0.5 mb-4 text-[10px] md:text-xs font-bold tracking-widest uppercase text-primary bg-primary/5 rounded-full border border-primary/10">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                    Featured Product
-                  </span>
-
-                  <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-tight text-neutral-900">
-                    {t?.products?.items?.find(p => p?.id === siteConfig.products[0].id)?.name || siteConfig.products[0].name}
-                  </h3>
-
-                  <p className="text-neutral-600 text-sm md:text-base mb-6 leading-relaxed line-clamp-2 md:line-clamp-3">
-                    {t?.products?.items?.find(p => p?.id === siteConfig.products[0].id)?.description || siteConfig.products[0].description}
-                  </p>
-
-                  <Link
-                    href={`/products/${siteConfig.products[0].id}`}
-                    className="group/btn inline-flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-primary/30 transform hover:-translate-y-0.5 text-xs md:text-sm"
-                  >
-                    Lihat Detail
-                    <svg
-                      className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {siteConfig.products.slice(1).map((product) => (
+          {siteConfig.products.map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}

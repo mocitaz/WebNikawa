@@ -117,12 +117,7 @@ export const translations = {
       Infrastructure: '基础设施',
     },
     items: [
-      {
-        id: 'hero-mc30-01',
-        name: 'Hero-MC30-01',
-        description: '用于商业车队的经济高效型1+1通道迷你AI行车记录仪',
-        category: 'Electronics',
-      },
+
       {
         id: 'plastic-injection',
         name: '塑料注塑产品',
@@ -502,44 +497,7 @@ export const translations = {
     },
   },
   productDetails: {
-    'hero-mc30-01': {
-      overview: 'Hero-MC30-01是一款用于商业车队的经济高效型1+1通道迷你AI行车记录仪。具有安装简便、设计紧凑、可拆卸第二摄像头以实现灵活扩展等特点。',
-      features: [
-        '更实惠且经济高效',
-        '安装简便灵活',
-        '紧凑设计，极少遮挡驾驶员视线',
-        '可拆卸第二摄像头，实现灵活扩展',
-        'AI功能：人脸识别和DMS（驾驶员监控系统）',
-        'ADAS（高级驾驶辅助系统）',
-        '内置4G和Wi-Fi',
-        '支持1080p双通道视频',
-      ],
-      specifications: [
-        { label: '型号', value: 'Hero-MC30-01 H' },
-        { label: '操作系统', value: '嵌入式Linux' },
-        { label: '摄像头', value: '前置：1080p@30fps (116°)，可拆卸：1080p@30fps' },
-        { label: 'AI功能', value: '人脸识别，DMS，ADAS（FCW，HMW，PCW，LDW）' },
-        { label: '连接性', value: '4G，Wi-Fi 2.4GHz，GNSS' },
-        { label: '传感器', value: '6轴重力传感器' },
-        { label: '存储', value: 'Micro SD 最大1TB' },
-        { label: '电源', value: '9-36V DC' },
-        { label: '尺寸', value: '110 x 67.8 x 29.5 mm' },
-      ],
-      applications: [
-        '商业车队管理',
-        '物流与运输',
-        '出租车和网约车',
-        '企业运营车辆',
-        '驾驶员安全监控',
-      ],
-      benefits: [
-        '提高驾驶员安全性',
-        '实时车队监控',
-        '事故视频证据',
-        '节省运营成本',
-        '安装简便，不干扰',
-      ],
-    },
+
     'plastic-injection': {
       overview: '我们提供高精度注塑成型服务，满足各种工业需求。采用最新技术和优质材料，我们根据您的规格生产定制塑料产品，符合国际质量标准。',
       features: [
